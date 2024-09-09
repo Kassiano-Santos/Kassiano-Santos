@@ -1,4 +1,4 @@
-//criacao da tarefa
+//Create a task
 import React from "react";
 
 const Task = ({task, onDelete, onToggleDone }) => {
@@ -11,7 +11,7 @@ const Task = ({task, onDelete, onToggleDone }) => {
       >
         {task.text}
       </span>
-      <button onClick={onDelete}>Remover</button>
+      <button onClick={onDelete}>Remove Task</button>
     </li>
   )
 }

@@ -5,7 +5,7 @@ import Task from '../../../to_do_list_project/src/components/task';
 
 const TaskList = ({tasks, onDeleteTask, onToggleTaskDone}) => {
   if(tasks.length === 0) {
-    return <p>Não há tarefas cadastradas!</p>
+    return <p>There are no registered tasks!</p>
   }
   return (
     <ul>

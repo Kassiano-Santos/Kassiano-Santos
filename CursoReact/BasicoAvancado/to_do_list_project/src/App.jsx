@@ -18,7 +18,7 @@ function App() {
 
   const addTask = (task, idSeq) => {
     
-    //pegando todas as tarefas com um spread e colocá-las num novo array
+    //Selecting all tasks with a Spread and putting then into a new array.
     setTasks([...tasks, {id: Date.now() , text: task, done: false}]);
     
     //Save the task immediately after adding it.
@@ -45,7 +45,7 @@ function App() {
 
   return (
     <>
-    <h1>Lista de Tarefas</h1>
+    <h1>Task List</h1>
     <TaskInput onAddTask = {addTask}/>
     <TaskList 
     tasks= {tasks} 
