@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Elegant Watch",
+    "price": 50.99,
+    "image": "https://source.unsplash.com/featured/?watch"
+  },
+  {
+    "id": 2,
+    "name": "Camera Vintage",
+    "price": 85.5,
+    "image": "https://source.unsplash.com/featured/?camera"
+  },
+  {
+    "id": 3,
+    "name": "Headphones",
+    "price": 35.99,
+    "image": "https://source.unsplash.com/featured/?headphones"
+  },
+  {
+    "id": 4,
+    "name": "Running Shoes",
+    "price": 120.0,
+    "image": "https://source.unsplash.com/featured/?sneakers"
+  },
+  {
+    "id": 5,
+    "name": "Smartphone",
+    "price": 299.99,
+    "image": "https://source.unsplash.com/featured/?smartphone"
+  },
+  {
+    "id": 6,
+    "name": "Adventure Book",
+    "price": 19.99,
+    "image": "https://source.unsplash.com/featured/?book"
+  }
+]
