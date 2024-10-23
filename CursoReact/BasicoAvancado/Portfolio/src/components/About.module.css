@@ -1,0 +1,13 @@
+.title {
+  font-family: "Roboto";
+  font-size: 35px;
+  color: #d4cdcd;
+}
+.aboutText{
+  color: #d4cdcd;
+  font-family: "open sans";
+  padding-left: 20px;
+  padding-top: none;
+  padding-bottom: 20px;
+  text-align: justify;
+}

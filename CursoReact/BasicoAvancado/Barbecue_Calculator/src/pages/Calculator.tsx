@@ -5,7 +5,7 @@ const Calculator = ()=> {
     <div 
     className="page-conteiner" 
     style={{backgroundImage: `url(${bgImage})`}}>
-      <h1>Babecue Calculator</h1>
+      <h1 className="title">Babecue Calculator</h1>
       <BarbecueCalculator />
     </div>
   );

@@ -4,7 +4,7 @@ import bgImage from "../assets/bg-2.jpg";
 const Result = ()=> {
   return (
     <div style = {{backgroundImage: `url(${bgImage})`}} className="page-conteiner">
-      <h1>Barbecue Result</h1>
+      <h1 className="title">Barbecue Result</h1>
       <BarbecueResult />
     </div>
   );

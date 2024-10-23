@@ -1,0 +1,46 @@
+.title {
+  font-family: "Roboto";
+  font-size: 35px;
+  color: #d4cdcd;
+}
+.projectList{
+  padding-top: 0.1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  text-align: justify;
+}
+
+.projectList:hover{
+  background-color:rgba(145, 146, 174, 0.1);
+  border-radius: 5px;
+  padding-top: 0.1px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  color: #45dca4;
+  transition: 0.3s;
+}
+.titleProjects{
+  color: #d4cdcd;
+  font-family: "lora";
+  font-size: 20px;
+}
+.textProjects{
+  color: #d4cdcd;
+  font-family: "open sans";
+}
+.titleProjects:hover {
+  cursor: pointer;
+  color: #45dca4;
+}
+
+.buttons{
+  margin: 10px;
+  background-color: rgba(145, 146, 174, 0.1);;
+  border-radius: 5px; 
+  font-size: 13px;
+  padding: 10px;
+  color: #45dca4;
+  border: none;
+  font-weight: bold;
+}

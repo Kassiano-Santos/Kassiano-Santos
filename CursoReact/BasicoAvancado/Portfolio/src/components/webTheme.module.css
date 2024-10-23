@@ -1,0 +1,63 @@
+.conteiner{
+  background-color: #0a192f;
+  justify-content: center ;
+  font-family: sans-serif ;
+  padding-left: 30px;
+  padding-top: 70px;
+}
+
+
+.links{
+  color: #d4cdcd;
+  cursor: pointer;
+  list-style-type: none;
+  text-decoration: none;
+  margin: none;
+  justify-items: center;
+}
+
+.ul {
+  list-style-type: none;
+  padding: none;
+}
+
+.icons{
+  color: #fff;
+}
+
+.fixedGrid{
+  display: grid;
+  gap: 50px;
+  position: fixed;
+}
+
+.name{
+  font-size: 50px;
+  font-family: "lora";
+  color: #d4cdcd;
+}
+
+.dev{
+  font-family: "lora";
+  color: #d4cdcd;
+}
+.title {
+  font-family: "Roboto";
+  font-size: 35px;
+  color: #d4cdcd;
+}
+.gridInline{
+  display: inline;
+}
+
+@media (max-width: 1300px) {
+  .name{
+  font-size: 30px;
+  }
+  .conteiner {
+    padding-top: 20px;
+  }
+  .fixedGrid{
+    position: static;
+  }
+}
