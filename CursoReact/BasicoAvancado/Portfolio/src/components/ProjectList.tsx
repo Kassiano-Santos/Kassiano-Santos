@@ -1,6 +1,7 @@
 import Grid from '@mui/material/Grid2';
-import React from 'react';
-import styles from './ProjectList.module.css'
+import styles from './ProjectList.module.css';
+import { Link } from "react-router-dom";
+
 
 
 const ProjectList = () => {
@@ -8,7 +9,15 @@ const ProjectList = () => {
     <>
       <h1 className={styles.title}>Project List:</h1>
       <Grid size= {12} className= {styles.projectList}>
-          <h3 className={styles.titleProjects}>Barbecue Calculator</h3>
+          <Link 
+            to= "/barbecuecalculator" 
+            className={styles.titleProjects}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Barbecue Calculator
+          </Link>
+        {/**/}
           <p className={styles.textProjects}>Um projeto com o objetivo de 
             auxiliar pessoas que querem fazer um churrasco, exibindo quais 
             produtos cada um deveria levar e calculando quando cada pessoa

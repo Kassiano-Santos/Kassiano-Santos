@@ -9,6 +9,10 @@
   font-family: "lora";
 }
 
+.certificateButton:hover {
+  background-color: #0f4524;
+}
+
 .certificateList{
   padding-top: 0.1px;
   padding-left: 20px;
@@ -30,9 +34,7 @@
   font-size: 20px;
 }
 
-.certificateButton:hover {
-  background-color: #0f4524;
-}
+
 .titleCertificate{
   font-family: "Roboto";
   font-size: 35px;

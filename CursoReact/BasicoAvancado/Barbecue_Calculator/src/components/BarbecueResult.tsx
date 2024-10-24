@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import {Food, foodName, quantityPersons} from "../types/Food.ts"
-import { BarbecueResultType } from '../types/BarbecueResultType';
+import { BarbecueResultType } from '../types/BarbecueResultType.ts';
 import styles from "./BarbecueResult.module.css";
 
 const BarbecueResult = ()=> {

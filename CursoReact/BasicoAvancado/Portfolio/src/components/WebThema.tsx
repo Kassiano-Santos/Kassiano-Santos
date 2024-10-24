@@ -7,41 +7,46 @@ import { CssBaseline, Link } from '@mui/material';
 import Icons from './Icons.tsx';
 import { useRef } from 'react';
 
+
 const WebThema = ()=>{
   const aboutRef = useRef<HTMLDivElement | null> (null);
   const projectListRef = useRef<HTMLDivElement | null> (null);
   const certificatesRef = useRef<HTMLDivElement | null> (null);
-
+  
   
   return (
     <>
       <CssBaseline />
-      <Grid container spacing={2} className={styles.conteiner} ref= {aboutRef}>
+      <Grid container spacing={2} className={styles.conteiner} ref= {aboutRef} >
         <Grid size={{xl: 4, xs: 12}} >
           <Grid size={{xl: 4, xs: 12}} className={styles.fixedGrid}>
-            <Grid size={{xl: 12, xs: 12}} >
+            <Grid size={{xl: 12, xs: 12}} ref = {projectListRef}>
               <h1 className={styles.name}>Kassiano Santos</h1>
               <h2 className={styles.dev}>Dev. Junior</h2>
             </Grid>
-            <Grid size= {{xl: 4, xs: 12}} className= {styles.links}>
-              <Grid>
+            <Grid size= {{xl: 4, xs: 12}} >
+              <Grid className= {styles.linkItem}>
                 <Link 
-                  color="inherit" 
-                  underline="hover"
+                  color="#d4cdcd" 
+                  underline="none"
+                  className= {styles.links}
                   component="button"
+                  rel="noopener"
                   onClick={()=> {
                     aboutRef.current?.scrollIntoView({
                       behavior: 'smooth'
+                      
                     })
                   }}
                 >
-                About
+                ABOUT
                 </Link>
               </Grid>
-              <Grid>
+              <Grid className= {styles.linkItem}>
                 <Link
-                  color="inherit" 
-                  underline="hover"
+                  color="#d4cdcd" 
+                  underline="none"
+                  className= {styles.links}
                   component="button"
                   onClick={()=> {
                     projectListRef.current?.scrollIntoView({
@@ -49,13 +54,14 @@ const WebThema = ()=>{
                     })
                   }}
                 >
-                  Project List
+                  PROJECT LIST
                 </Link>
               </Grid>
-              <Grid>
+              <Grid className= {styles.linkItem}>
                 <Link
-                  color="inherit" 
-                  underline="hover"
+                  color="#d4cdcd" 
+                  underline="none"
+                  className= {styles.links}
                   component="button"
                   onClick={()=> {
                     certificatesRef.current?.scrollIntoView({
@@ -63,7 +69,7 @@ const WebThema = ()=>{
                     })
                   }}
                 >
-                  Certificates
+                  CERTIFICATES
                 </Link>
               </Grid>
             </Grid>
