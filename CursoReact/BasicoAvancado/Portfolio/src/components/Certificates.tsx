@@ -28,7 +28,7 @@ const Certificates= ()=> {
   return (
     <div>
       <h1 className={styles.titleCertificate}>Certificates:</h1>
-      <Grid size = {12} className={styles.certificateList}>
+      <Grid size = {10} className={styles.certificateList}>
         <h3 className={styles.subtitleCerticates}>Computer Science High School:</h3>
         <button onClick={onHishSchoolCertificate} className= {styles.certificateButton}> Download</button>
       </Grid>

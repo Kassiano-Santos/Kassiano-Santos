@@ -1,6 +1,6 @@
 .certificateButton {
   background-color: #0a192f;
-  color: white;
+  color: #fff;
   border: 3px solid #1f8245;
   border-radius: 5px; 
   font-size: 15px;
@@ -33,7 +33,6 @@
   color: #d4cdcd;
   font-size: 20px;
 }
-
 
 .titleCertificate{
   font-family: "Roboto";

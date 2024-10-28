@@ -1,5 +1,4 @@
 .conteiner{
-  background-color: #0a192f;
   justify-content: center ;
   font-family: sans-serif ;
   padding-left: 30px;
@@ -59,9 +58,15 @@ font-weight: bold;
   display: inline;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
   .name{
-  font-size: 30px;
+  font-size: 70px;
+  }
+  .dev{
+    font-size: 30px;
+  }
+  .linkItem{
+    font-size: 20px;
   }
   .conteiner {
     padding-top: 20px;

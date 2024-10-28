@@ -3,7 +3,7 @@ import styles from "./webTheme.module.css";
 import ProjectList from './ProjectList';
 import Certificates from './Certificates';
 import About from './About.tsx';
-import { CssBaseline, Link } from '@mui/material';
+import { Container, Link } from '@mui/material';
 import Icons from './Icons.tsx';
 import { useRef } from 'react';
 
@@ -13,16 +13,14 @@ const WebThema = ()=>{
   const projectListRef = useRef<HTMLDivElement | null> (null);
   const certificatesRef = useRef<HTMLDivElement | null> (null);
   
-  
   return (
-    <>
-      <CssBaseline />
+    <Container maxWidth={false} sx={{height: "100%", backgroundColor: "#0a192f"}}>
       <Grid container spacing={2} className={styles.conteiner} ref= {aboutRef} >
         <Grid size={{xl: 4, xs: 12}} >
           <Grid size={{xl: 4, xs: 12}} className={styles.fixedGrid}>
             <Grid size={{xl: 12, xs: 12}} ref = {projectListRef}>
               <h1 className={styles.name}>Kassiano Santos</h1>
-              <h2 className={styles.dev}>Dev. Junior</h2>
+              <h2 className={styles.dev}>Junior Front End Engineer </h2>
             </Grid>
             <Grid size= {{xl: 4, xs: 12}} >
               <Grid className= {styles.linkItem}>
@@ -92,7 +90,7 @@ const WebThema = ()=>{
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </Container>
   )
 }
 

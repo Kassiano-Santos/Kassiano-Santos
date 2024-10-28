@@ -1,6 +1,6 @@
 import Search from '../components/Search.tsx';
 import { useState } from 'react';
-import { UserProps } from '../types/User';
+import { UserProps } from '../types/user';
 import User from "../components/User.tsx";
 import Error from '../components/Error.tsx';
 import Loader from '../components/Loader.tsx';

@@ -8,14 +8,14 @@ const ProjectList = () => {
   return (
     <>
       <h1 className={styles.title}>Project List:</h1>
-      <Grid size= {12} className= {styles.projectList}>
+      <Grid size={{xl:12, xs: 12}} className= {styles.projectList}>
           <Link 
             to= "/barbecuecalculator" 
             className={styles.titleProjects}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Barbecue Calculator
+            <h3>Barbecue Calculator</h3>
           </Link>
         {/**/}
           <p className={styles.textProjects}>Um projeto com o objetivo de 
@@ -32,7 +32,14 @@ const ProjectList = () => {
       </Grid>
 
       <Grid size={12} className= {styles.projectList}>
-        <h3 className={styles.titleProjects}>To do List</h3>
+        <Link 
+          to = "/todolist"
+          className={styles.titleProjects}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 className={styles.titleProjects}>To do List</h3>
+        </Link>
         <p className={styles.textProjects}>Permite o usuário criar uma lista 
           de tarefas. O código foi implementado em React e javascript, com o
           objetivo de colocar em práticas os conceitos básicos e iniciais de
@@ -41,7 +48,7 @@ const ProjectList = () => {
         <button className={styles.buttons}>Javascript</button>
       </Grid>
 
-      <Grid size={12} className= {styles.projectList}>
+      <Grid size={{xl:12, xs: 12}} className= {styles.projectList}>
         <h3 className={styles.titleProjects}>E-comerce Project</h3>
         <p className={styles.textProjects}>Um simples e-comerce onde não foram 
           implementadas as partes mais burocráticas de um e-comerce completo, 
@@ -54,8 +61,15 @@ const ProjectList = () => {
         <button className={styles.buttons}>Toastify</button>
       </Grid>
 
-      <Grid size={12} className= {styles.projectList}>
-        <h3 className={styles.titleProjects}>GitHub Finder</h3>
+      <Grid size={{xl:12, xs: 12}} className= {styles.projectList}>
+        <Link 
+          to="/githubfinder"
+          className={styles.titleProjects}
+          target="_blank"
+          rel="noopener noreferrer"
+          >
+          <h3 className={styles.titleProjects}>GitHub Finder</h3>
+        </Link>
         <p className={styles.textProjects}>Permite o usuário de localizar 
           usuarios na plataforma do Github. Utilizando a API do Github para 
           fazer as buscas, o usuário ainda consegue ver o ranking de principais
@@ -66,9 +80,17 @@ const ProjectList = () => {
       </Grid>
 
       <Grid size= {12} className= {styles.projectList}>
-        <h3 className={styles.titleProjects}>Photo Album</h3>
-        <p className={styles.textProjects}>O projeto é um album de fotos, 
-          utilizando o Axios, o album é alimentado pela API Unsplash. </p>
+        <Link 
+          to= "/game"
+          className={styles.titleProjects}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 className={styles.titleProjects}>Memory Game</h3>
+        </Link>
+        <p className={styles.textProjects}>O projeto se trata de um jogo de 
+          memória com letras, no qual você tem 20 chances de acertar a posição 
+          de cada letra do tabuleiro </p>
         <button className={styles.buttons}>React.js</button>
         <button className={styles.buttons}>Javascript</button>
       </Grid>
