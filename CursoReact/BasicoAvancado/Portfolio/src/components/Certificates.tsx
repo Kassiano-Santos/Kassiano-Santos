@@ -1,49 +1,77 @@
-import React from 'react';
+import  { useState } from 'react';
 import Grid from '@mui/material/Grid2';
-import ReactTsUs from "../assets/React_TS_US.pdf";
-import HighSchoolCertificate from "../assets/HighSchoolCertificate.pdf";
 import styles from "./Certificates.module.css";
+import FileHighSchoolJP from "./FileHighSchoolJP.js";
+import FileHighSchoolEN from './FileHighSchoolEN.js';
+import FileHighSchoolPT from './FileHighSchoolPT.js';
+import FileEnglishCoursePT from './FileEnglishCoursePT.js';
+import FileReactCertificateEN from './FileReactCertificateEN.js';
+import FileReactCertificateJP from './FileReactCertificateJP.js';
+import FileReactCertificatePT from './FileReactCertificatePT.js';
 
 const Certificates= ()=> {
-  const onReactCertificate = () => {
-    const pdfReact = ReactTsUs;
-    const link = document.createElement("a");
-    link.href = pdfReact;
-    link.download = "React_TS_US.pdf"; // specify the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
+  const [language1, setLanguage1] = useState("");
+  const [language2, setLanguage2] = useState("");
+  const [language3, setLanguage3] = useState("");
 
-  const onHishSchoolCertificate = () => {
-    const pdfHighSchool = HighSchoolCertificate;
-    const link = document.createElement("a");
-    link.href = pdfHighSchool;
-    link.download = "HighSchoolCertificate.pdf"; // specify the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
 
-  return (
+   return (
     <div>
       <h1 className={styles.titleCertificate}>Certificates:</h1>
-      <Grid size = {10} className={styles.certificateList}>
-        <h3 className={styles.subtitleCerticates}>Computer Science High School:</h3>
-        <button onClick={onHishSchoolCertificate} className= {styles.certificateButton}> Download</button>
-      </Grid>
+        <Grid size = {12} className={styles.certificateList}>
+          <h3 className={styles.subtitleCerticates}>Computer Science High School:</h3>
+          <select 
+            value={language1} 
+            onChange={(e)=> setLanguage1(e.target.value)}
+            className={styles.selectStyle}
+          >
+            <option >Language</option>
+            <option >English</option>
+            <option>Japanese</option>
+            <option>Portuguese</option>
+          </select>
+          {language1 == "English"? <FileHighSchoolEN /> : ""}
+          {language1 == "Japanese"? <FileHighSchoolJP /> : ""}
+          {language1 == "Portuguese"? <FileHighSchoolPT /> : ""}
+        </Grid>
+
       <Grid size = {12} className={styles.certificateList}>
         <h3 className={styles.subtitleCerticates}>Japanese Proeficiency Test:</h3>
       </Grid>
+
       <Grid size = {12} className={styles.certificateList}>
           <h3 className={styles.subtitleCerticates}>React Certificate: </h3>
-          <button onClick={onReactCertificate} className= {styles.certificateButton}>Download</button>
+          <select 
+            value={language2} 
+            onChange={(e)=> setLanguage2(e.target.value)}
+            className={styles.selectStyle}
+          >
+            <option>Language</option>
+            <option>English</option>
+            <option>Japanese</option>
+            <option>Portuguese</option>
+          </select>
+
+          {language2 == "English"? <FileReactCertificateEN /> : ""}
+          {language2 == "Japanese"? <FileReactCertificateJP /> : ""}
+          {language2 == "Portuguese"? <FileReactCertificatePT /> : ""}
        </Grid>
       <Grid size = {12} className={styles.certificateList}>
-        <h3 className={styles.subtitleCerticates}>English Course:</h3>
-      </Grid>
-      <Grid size = {12} className={styles.certificateList}>
-        <h3 className={styles.subtitleCerticates}>Javascript Alura Course:</h3>
+       <h3 className={styles.subtitleCerticates}>English Course:</h3>
+        <select 
+          value={language3} 
+          onChange={(e)=> setLanguage3(e.target.value)}
+          className={styles.selectStyle}
+        >
+          <option>Language</option>
+          <option>English</option>
+          <option>Japanese</option>
+          <option>Portuguese</option>
+        </select>
+        {language3 == "English"? <FileEnglishCoursePT /> : ""}
+        {language3 == "Japanese"? <FileEnglishCoursePT /> : ""}
+        {language3 == "Portuguese"? <FileEnglishCoursePT /> : ""}
+        
       </Grid>
     </div>
   )

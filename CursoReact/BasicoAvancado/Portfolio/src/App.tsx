@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import LinkRoutes from './components/LinkRoutes.tsx';
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
   return (
       <div>
         <LinkRoutes />
+        <Outlet />
       </div>
   )
 }

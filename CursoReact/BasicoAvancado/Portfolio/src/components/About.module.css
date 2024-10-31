@@ -2,22 +2,35 @@
   font-family: "Roboto";
   font-size: 35px;
   color: #d4cdcd;
+  font-weight: bold;
 }
 .aboutText{
   color: #d4cdcd;
   font-family: "open sans";
-  padding-left: 20px;
   padding-right: 20px;
   padding-top: none;
   padding-bottom: 20px;
   text-align: justify;
 }
+.aboutText li{
+  margin-top: 20px;
+  margin-left: 20px;
+}
 
-@media (max-width: 1500px) {
+.subtitleAbout{
+  color: #d4cdcd;
+  font-family: "lora";
+  font-size: 20px;
+}
+
+@media (max-width: 1024px) {
   .title{
-    font-size: 40px;
+    font-size: 25px;
   }
   .aboutText{
-    font-size: 20px;
+    font-size: 13px;
+  }
+  .subtitleAbout{
+    font-size: 16px;
   }
 }

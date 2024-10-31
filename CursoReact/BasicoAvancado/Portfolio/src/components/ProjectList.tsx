@@ -18,12 +18,11 @@ const ProjectList = () => {
             <h3>Barbecue Calculator</h3>
           </Link>
         {/**/}
-          <p className={styles.textProjects}>Um projeto com o objetivo de 
-            auxiliar pessoas que querem fazer um churrasco, exibindo quais 
-            produtos cada um deveria levar e calculando quando cada pessoa
-            levaria com base no número de pessoas. Além de React e Javascript, 
-            foi utilizado a biblioteca Formik e YUP para validações do 
-            formulário.
+          <p className={styles.textProjects}>
+            A project developed to help organize barbecues by calculating the 
+            necessary quantities and types of items based on the number of 
+            guests. In addition to React and JavaScript, we used the Formik 
+            and Yup libraries for form validation.
           </p>
           <button className={styles.buttons}>React.js</button>
           <button className={styles.buttons}>Javascript</button>
@@ -40,15 +39,16 @@ const ProjectList = () => {
         >
           <h3 className={styles.titleProjects}>To do List</h3>
         </Link>
-        <p className={styles.textProjects}>Permite o usuário criar uma lista 
-          de tarefas. O código foi implementado em React e javascript, com o
-          objetivo de colocar em práticas os conceitos básicos e iniciais de
-          React.</p>
+        <p className={styles.textProjects}>
+        This project is a simple to-do list where users can add and delete 
+        tasks. The code was implemented in React and JavaScript to practice 
+        foundational React concepts.
+        </p>
         <button className={styles.buttons}>React.js</button>
         <button className={styles.buttons}>Javascript</button>
       </Grid>
 
-      <Grid size={{xl:12, xs: 12}} className= {styles.projectList}>
+      <Grid size={{xl:12, xs: 12}} className= {styles.ecomerce}>
         <h3 className={styles.titleProjects}>E-comerce Project</h3>
         <p className={styles.textProjects}>Um simples e-comerce onde não foram 
           implementadas as partes mais burocráticas de um e-comerce completo, 
@@ -70,10 +70,11 @@ const ProjectList = () => {
           >
           <h3 className={styles.titleProjects}>GitHub Finder</h3>
         </Link>
-        <p className={styles.textProjects}>Permite o usuário de localizar 
-          usuarios na plataforma do Github. Utilizando a API do Github para 
-          fazer as buscas, o usuário ainda consegue ver o ranking de principais
-          projetos ordenados de acordo com a avaliação feita por estrelas no Github. 
+        <p className={styles.textProjects}>
+         Allows users to search for profiles on the GitHub platform using the
+         GitHub API for efficient searching. Additionally, users can view a 
+         ranking of top projects, sorted by star rating to highlight their 
+         popularity and community approval on GitHub. 
         </p>
         <button className={styles.buttons}>React.js</button>
         <button className={styles.buttons}>Typescript</button>
@@ -88,9 +89,10 @@ const ProjectList = () => {
         >
           <h3 className={styles.titleProjects}>Memory Game</h3>
         </Link>
-        <p className={styles.textProjects}>O projeto se trata de um jogo de 
-          memória com letras, no qual você tem 20 chances de acertar a posição 
-          de cada letra do tabuleiro </p>
+        <p className={styles.textProjects}>
+          This project is a memory game with letters, where the player has 20 
+          chances to match the position of each letter on the board. 
+        </p>
         <button className={styles.buttons}>React.js</button>
         <button className={styles.buttons}>Javascript</button>
       </Grid>

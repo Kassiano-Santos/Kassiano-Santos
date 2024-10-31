@@ -39,3 +39,28 @@
   font-size: 35px;
   color: #d4cdcd;
 }
+
+.text p{
+ color: #d4cdcd;
+ font-family: "open sans";
+}
+.selectStyle {
+  color: #fff;
+  background-color: #0a192f;
+  color: #fff;
+  border: 2px solid #1f8245;
+  border-radius: 5px; 
+  font-size: 13px;
+  padding: 5px;
+  font-family: "open sans";
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .titleCertificate{
+    font-size: 25px;
+  }
+  .subtitleCerticates {
+    font-size: 16px;
+  }
+}
