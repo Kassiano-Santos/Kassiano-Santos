@@ -1,0 +1,15 @@
+.title{
+  text-align: center;
+  color: #fff;
+}
+
+.taskTitle{
+  color: #fff;
+  font-size: 50px;
+}
+
+@media (max-width: 1500px) {
+  .taskTitle{
+  font-size: 50px;
+  }
+}

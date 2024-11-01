@@ -1,0 +1,22 @@
+.title{
+  color: #fff;
+  text-align: center;
+  font-family: "Roboto";
+}
+
+.containerItem{
+  position: fixed;
+  background-color: #0a192f;
+  font-family: sans-serif ;
+  padding-left: 30px;
+}
+
+
+@media (max-width: 1500px){
+  .containerItem{
+    position: static;
+  }
+  .userGrid{
+    margin-bottom: 200px;
+  }
+}
