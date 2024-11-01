@@ -23,7 +23,8 @@ const Home = ()=> {
 
     setIsLoading(false);
 
-    if(response.status === 404) {
+    if(response.status === 404 ) {
+      error;
       setError(true);
     }
     
