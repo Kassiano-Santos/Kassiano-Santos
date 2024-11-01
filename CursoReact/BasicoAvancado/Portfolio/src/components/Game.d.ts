@@ -1,1 +1,5 @@
-export declare const Game;
+const Game = ()=> {
+  return module ;
+}
+
+export default Game;
