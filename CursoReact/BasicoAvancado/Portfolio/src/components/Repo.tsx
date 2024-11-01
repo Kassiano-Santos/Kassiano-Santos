@@ -2,7 +2,7 @@ import { RepoProps } from "../types/repo.ts";
 import { BsCodeSlash } from 'react-icons/bs';
 import { AiOutlineStar, AiOutlineFork } from 'react-icons/ai';
 import { RiGitRepositoryLine } from 'react-icons/ri';
-import styles from "./repo.module.css";
+import styles from "./Repo.module.css";
 import Grid from '@mui/material/Grid2';
 import { Container, Link } from '@mui/material';
 
