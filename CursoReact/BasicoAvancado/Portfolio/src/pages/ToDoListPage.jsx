@@ -14,5 +14,4 @@ const ToDoListPage = () => {
     </Container>
   )
 }
-
-export default ToDoListPage
+export default ToDoListPage;
