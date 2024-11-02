@@ -3,7 +3,6 @@ import styles from "./Search.module.css";
 import SearchIcon from '@mui/icons-material/Search';
 import Grid from '@mui/material/Grid2';
 import { Container, Link } from '@mui/material';
-import { Height } from '@mui/icons-material';
 
 type SearchProps = {
   loadUser: (userName:string)=> Promise<void>;
