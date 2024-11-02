@@ -41,6 +41,8 @@ const User = ({
         <div>
         <Link 
           className={styles.projectButton}
+          underline="none"
+          color="#fff"
           onClick={()=>{ public_repos === 0 ? handleRepos()
             : navigate(`/repos/${login}`)}
           }>See the Best Project
