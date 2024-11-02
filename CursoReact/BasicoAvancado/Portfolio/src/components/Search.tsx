@@ -20,7 +20,7 @@ const Search = ({loadUser}: SearchProps)=> {
   }
 
   return (
-    <Container maxWidth={false} sx={{Height: "100%", backgroundColor: "#0a192f"}}>
+    <Container>
         <Grid className={styles.search} container spacing={2}>
           <Grid className={styles.text}>
             <h2>Search Users</h2>
@@ -41,10 +41,9 @@ const Search = ({loadUser}: SearchProps)=> {
               </Link>
             </Grid>
           </Grid>
-          
         </Grid>
         <Grid className= {styles.baseboardSearch}>
-          </Grid>
+        </Grid>
     </Container>
   )
 }
