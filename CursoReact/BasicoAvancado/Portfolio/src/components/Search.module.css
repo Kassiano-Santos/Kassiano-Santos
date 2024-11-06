@@ -1,7 +1,7 @@
 .search {
   background-color: #0a192f;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,5 +55,12 @@
 
 .baseboardSearch{
   background-color: #0a192f;
-  margin-bottom: 135px
+  margin-bottom: 150px
+}
+
+@media (max-width: 1024px){
+  .baseboardSearch{
+    margin-bottom: 304px
+  }
+  
 }
