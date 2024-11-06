@@ -16,7 +16,7 @@ const ProjectList = () => {
             rel="noopener noreferrer"
           >
             <h3>Barbecue Calculator</h3>
-          </Link>
+          
         {/**/}
           <p className={styles.textProjects}>
             A project developed to help organize barbecues by calculating the 
@@ -28,6 +28,7 @@ const ProjectList = () => {
           <button className={styles.buttons}>Javascript</button>
           <button className={styles.buttons}>Formik</button>
           <button className={styles.buttons}>Yup</button>
+          </Link>
       </Grid>
 
       <Grid size={12} className= {styles.projectList}>
@@ -37,8 +38,8 @@ const ProjectList = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h3 className={styles.titleProjects}>To do List</h3>
-        </Link>
+          <h3>To do List</h3>
+        
         <p className={styles.textProjects}>
         This project is a simple to-do list where users can add and delete 
         tasks. The code was implemented in React and JavaScript to practice 
@@ -46,6 +47,7 @@ const ProjectList = () => {
         </p>
         <button className={styles.buttons}>React.js</button>
         <button className={styles.buttons}>Javascript</button>
+        </Link>
       </Grid>
 
       <Grid size={{xl:12, xs: 12}} className= {styles.ecomerce}>
@@ -68,16 +70,17 @@ const ProjectList = () => {
           target="_blank"
           rel="noopener noreferrer"
           >
-          <h3 className={styles.titleProjects}>GitHub Finder</h3>
+          <h3>GitHub Finder</h3>
+        
+          <p className={styles.textProjects}>
+          Allows users to search for profiles on the GitHub platform using the
+          GitHub API for efficient searching. Additionally, users can view a 
+          ranking of top projects, sorted by star rating to highlight their 
+          popularity and community approval on GitHub. 
+          </p>
+          <button className={styles.buttons}>React.js</button>
+          <button className={styles.buttons}>Typescript</button>
         </Link>
-        <p className={styles.textProjects}>
-         Allows users to search for profiles on the GitHub platform using the
-         GitHub API for efficient searching. Additionally, users can view a 
-         ranking of top projects, sorted by star rating to highlight their 
-         popularity and community approval on GitHub. 
-        </p>
-        <button className={styles.buttons}>React.js</button>
-        <button className={styles.buttons}>Typescript</button>
       </Grid>
 
       <Grid size= {12} className= {styles.projectList}>
@@ -87,14 +90,15 @@ const ProjectList = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h3 className={styles.titleProjects}>Memory Game</h3>
-        </Link>
+          <h3>Memory Game</h3>
+        
         <p className={styles.textProjects}>
           This project is a memory game with letters, where the player has 20 
           chances to match the position of each letter on the board. 
         </p>
         <button className={styles.buttons}>React.js</button>
         <button className={styles.buttons}>Javascript</button>
+        </Link>
       </Grid>
     </>
   )

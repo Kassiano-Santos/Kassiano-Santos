@@ -20,16 +20,19 @@
   color: #45dca4;
   transition: 0.3s;
 }
+
+.textProjects{
+  color: #d4cdcd;
+  font-family: "open sans";
+  font-size: 16px;
+}
 .titleProjects{
   color: #d4cdcd;
   font-family: "lora";
   font-size: 20px;
   text-decoration: none;
 }
-.textProjects{
-  color: #d4cdcd;
-  font-family: "open sans";
-}
+
 .titleProjects:hover {
   cursor: pointer;
   color: #45dca4;
