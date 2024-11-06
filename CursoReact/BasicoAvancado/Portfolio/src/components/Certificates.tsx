@@ -8,7 +8,7 @@ import FileEnglishCoursePT from './FileEnglishCoursePT.tsx';
 import FileReactCertificateEN from './FileReactCertificateEN.tsx';
 import FileReactCertificateJP from './FileReactCertificateJP.tsx';
 import FileReactCertificatePT from './FileReactCertificatePT.tsx';
-import FileEnglishCourseEN from './FileEnglishCourseEN.tsx';
+import FileEnglishCourseEN from './FileEnglishCourseEN';
 import FileEnglishCourseJP from './FileEnglishCourseJP.tsx';
 import FileJlptCertificate from './FileJlptCertificate.tsx';
 
