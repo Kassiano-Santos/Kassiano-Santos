@@ -8,9 +8,7 @@ import FileEnglishCoursePT from './FileEnglishCoursePT.tsx';
 import FileReactCertificateEN from './FileReactCertificateEN.tsx';
 import FileReactCertificateJP from './FileReactCertificateJP.tsx';
 import FileReactCertificatePT from './FileReactCertificatePT.tsx';
-import FileEnglishCourseEN from './FileEnglishCourseEN';
-import FileEnglishCourseJP from './FileEnglishCourseJP.tsx';
-import FileJlptCertificate from './FileJlptCertificate.tsx';
+import FileEnglishCourseEN from './FileEnglishCourseEN.tsx';
 
 const Certificates= ()=> {
   const [language1, setLanguage1] = useState("");
@@ -39,7 +37,6 @@ const Certificates= ()=> {
 
       <Grid size = {12} className={styles.certificateList}>
         <h3 className={styles.subtitleCerticates}>Japanese Proeficiency Test:</h3>
-        <FileJlptCertificate />
       </Grid>
 
       <Grid size = {12} className={styles.certificateList}>
@@ -72,7 +69,7 @@ const Certificates= ()=> {
           <option>Portuguese</option>
         </select>
         {language3 == "English"?  <FileEnglishCourseEN /> : ""}
-        {language3 == "Japanese"?  <FileEnglishCourseJP /> : ""}
+        {language3 == "Japanese"?  <FileEnglishCourseEN /> : ""}
         {language3 == "Portuguese"?  <FileEnglishCoursePT /> : ""}
       </Grid>
     </div>
