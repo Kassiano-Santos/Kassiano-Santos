@@ -8,7 +8,6 @@ import FileEnglishCoursePT from './FileEnglishCoursePT.js';
 import FileReactCertificateEN from './FileReactCertificateEN.tsx';
 import FileReactCertificateJP from './FileReactCertificateJP.tsx';
 import FileReactCertificatePT from './FileReactCertificatePT.tsx';
-import FileEnglishCourseEN from './FileEnglishCourseEN.tsx';
 
 const Certificates= ()=> {
   const [language1, setLanguage1] = useState("");
