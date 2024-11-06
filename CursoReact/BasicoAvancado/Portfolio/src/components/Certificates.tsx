@@ -8,7 +8,6 @@ import FileEnglishCoursePT from './FileEnglishCoursePT.js';
 import FileReactCertificateEN from './FileReactCertificateEN.js';
 import FileReactCertificateJP from './FileReactCertificateJP.js';
 import FileReactCertificatePT from './FileReactCertificatePT.js';
-import FileEnglishCourseEN from './FileEnglishCourseEN.js';
 
 const Certificates= ()=> {
   const [language1, setLanguage1] = useState("");
@@ -70,7 +69,7 @@ const Certificates= ()=> {
           <option>Portuguese</option>
         </select>
         {language3 == "English"? <FileEnglishCoursePT /> : ""}
-        {language3 == "Japanese"? <FileEnglishCourseEN /> : ""}
+        {language3 == "Japanese"? <FileEnglishCoursePT /> : ""}
         {language3 == "Portuguese"? <FileEnglishCoursePT /> : ""}
         
       </Grid>
