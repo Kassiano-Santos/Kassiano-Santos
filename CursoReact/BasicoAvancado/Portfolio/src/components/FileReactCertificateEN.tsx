@@ -13,7 +13,7 @@ const FileReactCertificateEN = () => {
   }
   return (
     <div className={styles.text}>
-      <p>Certificate High School in English:</p> 
+      <p>React Course Certificate in English:</p> 
       <button onClick={onReactCertificate} className= {styles.certificateButton}> Download</button>
     </div>
   )
