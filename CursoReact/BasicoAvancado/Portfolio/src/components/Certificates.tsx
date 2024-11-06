@@ -1,16 +1,16 @@
 import  { useState } from 'react';
 import Grid from '@mui/material/Grid2';
 import styles from "./Certificates.module.css";
-import FileHighSchoolJP from "./FileHighSchoolJP.js";
-import FileHighSchoolEN from './FileHighSchoolEN.js';
-import FileHighSchoolPT from './FileHighSchoolPT.js';
-import FileEnglishCoursePT from './FileEnglishCoursePT.js';
-import FileReactCertificateEN from './FileReactCertificateEN.js';
-import FileReactCertificateJP from './FileReactCertificateJP.js';
-import FileReactCertificatePT from './FileReactCertificatePT.js';
-import FileEnglishCourseEN from './FileEnglishCourseEN.js';
-import FileEnglishCourseJP from './FileEnglishCourseJP.js';
-import FileJlptCertificate from './FileJlptCertificate.js';
+import FileHighSchoolJP from "./FileHighSchoolJP.tsx";
+import FileHighSchoolEN from './FileHighSchoolEN.tsx';
+import FileHighSchoolPT from './FileHighSchoolPT.tsx';
+import FileEnglishCoursePT from './FileEnglishCoursePT.tsx';
+import FileReactCertificateEN from './FileReactCertificateEN.tsx';
+import FileReactCertificateJP from './FileReactCertificateJP.tsx';
+import FileReactCertificatePT from './FileReactCertificatePT.tsx';
+import FileEnglishCourseEN from './FileEnglishCourseEN.tsx';
+import FileEnglishCourseJP from './FileEnglishCourseJP.tsx';
+import FileJlptCertificate from './FileJlptCertificate.tsx';
 
 const Certificates= ()=> {
   const [language1, setLanguage1] = useState("");
