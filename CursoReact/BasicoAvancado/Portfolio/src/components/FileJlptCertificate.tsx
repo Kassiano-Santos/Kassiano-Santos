@@ -13,7 +13,7 @@ const FileJlptCertificate = () => {
   }
   return (
     <div className={styles.text}>
-      <p>JLPT N3 Certificate:</p> 
+      <p>JLPT N2 Certificate:</p> 
       <button onClick={onReactCertificate} className= {styles.certificateButton}> Download</button>
     </div>
   )
