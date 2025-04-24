@@ -132,7 +132,7 @@ public class ProductGUI extends Application{
 	}
 	
 	 
-	// O método stop é chamado automaticamente quando a aplicação javafx é encerrada
+	// The stop method is called automatically when the javafx application is terminated.
 	 @Override
 	 public void stop() {
 		 try {
@@ -142,9 +142,10 @@ public class ProductGUI extends Application{
 		 }
 	 }
 	 
-	 //limpa os campos de entrada do formulário
-	 //ele é chamado ao adicionar, atualizar ou excluir um produto
-	 //afim de garantir que os campos de entrada estejam prontos para uma nova entrada
+	 /* clears the form input fields
+	    it is called when adding, updating or deleting a product
+	    to ensure that the input fields are ready for a new entry
+	 */
 	 
 	 private void clearFields() {
 		 inputName.clear();
@@ -154,15 +155,15 @@ public class ProductGUI extends Application{
 	 }
 	 
 	 /* 
-	  * cria uma coluna para TableView
-	  * @param title Título da coluna que será exibido no cabelçalho
-	  * @param property A propriedade do objeto produto que esta coluna deve exibir.
-	  * @return A coluna configurada para TabelView
-	  * */
+	  * creates a column for TableView
+      * @param title Column title that will be displayed in the header
+      * @param property The property of the product object that this column should display.
+      * @return The column configured for TableView
+	 */
 	 
 	 private TableColumn<Product, String> createColumn(String title, String property){
 		 TableColumn<Product, String> col = new TableColumn<>(title);
-		 col.setCellValueFactory(new PropertyValueFactory<>(property)); // define propriendades da coluna
+		 col.setCellValueFactory(new PropertyValueFactory<>(property)); // defines column properties
 		 return col;
 		 
 	 }

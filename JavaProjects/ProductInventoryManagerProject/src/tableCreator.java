@@ -7,7 +7,6 @@ public class tableCreator {
 	public static void main(String[] args) {
 		try(Connection connection = ConnectionDB.connectionDB();
 			Statement stmt = connection.createStatement()){
-			//String sqlCommand = "drop Table products";
 			
 			String sqlCommand = "CREATE TABLE products(" +
 					"id_product INTEGER PRIMARY KEY," +
