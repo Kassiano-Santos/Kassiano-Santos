@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Define o tipo de documento como HTML5 e linguagem da página como portugues brasil -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content= "device-width, initial-scale = 1.0">
+	<title>Client external web</title>
+</head>
+<body>
+	<h1>HTML/JavaSacript Client</h1> 
+	<div>
+		<label for = "id">ID:</label>
+		<input type="text" id="id"/>
+	</div>
+	<div>
+		<label for = "productName">Product Name:</label>
+		<input type="text" id="productName"/>
+	</div>
+	<div>
+		<label for = "price">Price:</label>
+		<input type="text" id="price"/>
+	</div>
+	<div>
+		<label for = "quantity">Quantity:</label>
+		<input type="text" id="quantity"/>
+	</div>
+	<div>
+		<label for = "status">Status:</label>
+		<input type="text" id="status"/>
+	</div>
+	<button onclick="add()" style="background-color: green; color: white">Add</button>
+	<button onclick="update()" style="background-color: blue; color: white">update</button>
+	<button onclick="remove()" style="background-color: red; color: white">remove</button>
+	<button onclick="loadFields()" style="background-color: gray; color: white">Load Fields</button>
+	<button onclick="clearFields()" style="background-color: black; color: white">Clear Fields</button>
+		
+	<h2>Products List</h2>
+	<ul id="productList"></ul>
+	<p id= "totalProducts"></p>
+	
+	<script>
+		const BASE_URL = 'http://localhost:8080/products';
+		
+		function getProductsFromForm(){
+			const productName = document.getElementById('productName').value;
+			const price = document.getElementById('price').value
+			const quantity = document.getElementById('quantity').value
+			const status = document.getElementById('status').value
+			
+			return { productName, price: parseFloat(price), quantity: parseInt(quantity), status }
+		}
+		
+		async function listAll(){
+			const response = await fetch(BASE_URL);
+			const products = await response.json();
+			const list = document.getElementById('productList');
+			const total = document.getElementById('totalProducts');
+			list.innerHTML = '';
+			
+			products.forEach(product => {
+				const item = document.createElement('li');
+				item.textContent = `ID: ${product.id}, Product Name: ${product.productName}, Price: ${product.price}, 
+				Quantity: ${product.quantity}, Status: ${product.status}`;
+				list.appendChild(item);
+			});
+			total.textContent = `Total Products: ${products.length}`
+		}
+		
+		async function add(){
+			const product = getProductsFromForm();
+			await fetch(BASE_URL, {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(product)
+			});
+			listAll();
+		}
+		
+		async function update(){
+			const product = getProductsFromForm();
+			const id = document.getElementById('id').value;
+			await fetch(`${BASE_URL}/${id}`, {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json'},
+				body: JSON.stringify(product)
+			});
+			listAll();
+		}
+		
+		async function remove(){
+			const id = document.getElementById('id').value;
+			await fetch(`${BASE_URL}/${id}`, { method: 'DELETE'});
+			listAll();
+		}
+		
+		function loadFields(){
+			const id = document.getElementById('id').value;
+			fetch(`${BASE_URL}/${id}`)
+			.then(response => response.json())
+			.then(product => {
+				document.getElementById('productName').value = product.productName;
+				document.getElementById('price').value = product.price;
+				document.getElementById('quantity').value = product.quantity;
+				document.getElementById('status').value = product.status;
+			})
+			.catch(error => {
+				console.error('Error when querying product:', error);
+			});
+		}
+		
+		function clearFields() {
+			document.getElementById('id').value = '';
+			document.getElementById('productName').value = '';
+			document.getElementById('price').value = '';
+			document.getElementById('quantity').value = '';
+			document.getElementById('status').value = '';
+		}
+		
+		document.addEventListener('DOMContentLoaded', listAll);	
+	</script>
+</body>
+</html>

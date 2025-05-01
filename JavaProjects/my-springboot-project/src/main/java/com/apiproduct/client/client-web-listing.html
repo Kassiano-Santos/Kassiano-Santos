@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Define o tipo de documento como HTML5 e linguagem da página como portugues brasil -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content= "device-width, initial-scale = 1.0">
+	<title>Product List</title>
+</head>
+<body>
+	<h2>Product List HTML/JavaScript</h2> 
+	<!-- Table that display list of products -->
+	<table id="productsTable" border= 1>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Product Name</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Table Lines was displays hear -->
+		</tbody>
+	</table>
+	
+	<div id = "errorMessage" style="color:red;display:none">
+		Error trying search products. Please, try again later.
+	</div>
+	
+	<div id=totalProducts>
+		Total Products: 0
+	</div>
+	
+	<!-- JavaScript Function -->
+	<script>
+		// Function to list product
+		function productsList(){
+			//Makes a GET request to the products endpoint
+			fetch('http://localhost:8080/products').then(response => {
+				if(!response.ok){
+					throw new Error('Network Error: ' + response.status);
+				}
+				return response.json();
+			})
+			.then(data => {
+				// obtém o corpo da tabela
+				const tableBody = document.getElementById('productsTable').getElementsByTagName('tbody')[0];
+				let totalProducts = 0;
+				data.forEach(product => {
+					const row = tableBody.insertRow();
+					const cellId = row.insertCell(0);
+					const cellProductName = row.insertCell(1);
+					const cellPrice = row.insertCell(2);
+					
+					cellId.textContent = product.id;
+					cellProductName.textContent = product.productName;
+					cellPrice.textContent = product.price;
+					totalProducts++;
+				});
+				//displays total Products
+				document.getElementById('totalProducts').textContent = 'Total Products: ' + totalProducts;
+			})
+			.catch(error => {
+				console.error('Error searching products: ', error);
+				document.getElementById('errorMessage').style.display = 'block';
+			});
+		}
+		document.addEventListener('DOMContentLoaded', productsList);
+	</script>
+</body>
+</html>
