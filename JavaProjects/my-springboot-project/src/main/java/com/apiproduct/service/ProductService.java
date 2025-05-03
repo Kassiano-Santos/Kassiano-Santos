@@ -61,5 +61,20 @@ public class ProductService {
 		 return productRepository.findByProductNameEndingWith(suffix);
 	 }
 	 
+	 public List<Product>findByPrice(Double price){
+		 return productRepository.findByPrice(price);
+	 }
+	 
+	 public List<Product>findByPriceGreaterThan(Double price){
+		 return productRepository.findByPriceGreaterThan(price);
+	 }
+	 
+	 public List<Product>findByPriceLessThan(Double price){
+		 return productRepository.findByPriceLessThan(price);
+	 }
+	 
+	 public Double findTotalPrice() {
+		 return productRepository.findTotalPrice();
+	 }
 
 }

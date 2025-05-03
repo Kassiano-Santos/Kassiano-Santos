@@ -63,9 +63,32 @@ public class ProductController {
 	 public List<Product> findByProductNameStartingWith(@RequestParam String prefix){
 		 return productService.findByProductNameStartingWith(prefix);
 	 }
+	 
 	 @GetMapping("/searchByNameEndingWith")
 	 public List<Product> findByProductNameEndingWith(@RequestParam String suffix){
 		 return productService.findByProductNameEndingWith(suffix);
 	 }
+	 @GetMapping("/findByPrice")
+	 public List<Product> findByPrice(@RequestParam double price){
+		 return productService.findByPrice(price);
+	 }
+	 
+	 @GetMapping("/findByPriceGreaterThan")
+	 public List<Product> findByPriceGreaterThan(@RequestParam double price){
+		 return productService.findByPriceGreaterThan(price);
+	 }
+	 
+	 @GetMapping("/findByPriceLessThan")
+	 public List<Product> findByPriceLessThan(@RequestParam double price){
+		 return productService.findByPriceLessThan(price);
+	 }
+	 
+	 @GetMapping("/findTotalPrice")
+	 public Double findTotalPrice(){
+		 return productService.findTotalPrice();
+	 }
+	 
+	 
+	 
 	 
 }
