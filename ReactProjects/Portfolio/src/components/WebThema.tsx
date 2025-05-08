@@ -1,6 +1,5 @@
 import Grid from '@mui/material/Grid2';
 import styles from "./webTheme.module.css";
-import ReactProjectList from './ReactProjectList.tsx';
 import Certificates from './Certificates';
 import About from './About.tsx';
 import { Container, Link } from '@mui/material';
