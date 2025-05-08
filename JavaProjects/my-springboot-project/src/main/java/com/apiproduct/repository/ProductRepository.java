@@ -18,6 +18,6 @@ public interface ProductRepository extends JpaRepository <Product, Long> {
 	List<Product> findByPriceGreaterThan(Double price);
 	List<Product> findByPriceLessThan(Double price);
 	
-	@Query("SELECT SUM(p.price) FROM products p")
-	Double findTotalPrice();
+	@Query("SELECT SUM(p.price) FROM Product p")
+	Double findByTotalPrice();
 }

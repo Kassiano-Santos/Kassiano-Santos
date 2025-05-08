@@ -15,7 +15,7 @@ public class StartupRestClientRunner implements CommandLineRunner{
 		System.out.println("RestClient running.");
 		
 		RestTemplate restTemplate = new RestTemplate();
-		String url = "http://localhost:8080/products";
+		String url = "http://localhost:8080/inventorymanagerproduct";
 		
 		Product[] productsArray = restTemplate.getForObject(url, Product[].class);
 		List<Product> products = Arrays.asList(productsArray);

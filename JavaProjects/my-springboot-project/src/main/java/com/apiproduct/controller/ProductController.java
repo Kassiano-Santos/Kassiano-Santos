@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins ="*")
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/inventorymanagerproduct")
 public class ProductController {
 	 @Autowired
 	 private ProductService productService;
@@ -81,14 +81,7 @@ public class ProductController {
 	 @GetMapping("/findByPriceLessThan")
 	 public List<Product> findByPriceLessThan(@RequestParam double price){
 		 return productService.findByPriceLessThan(price);
-	 }
-	 
-	 @GetMapping("/findTotalPrice")
-	 public Double findTotalPrice(){
-		 return productService.findTotalPrice();
-	 }
-	 
-	 
+	 }	 
 	 
 	 
 }

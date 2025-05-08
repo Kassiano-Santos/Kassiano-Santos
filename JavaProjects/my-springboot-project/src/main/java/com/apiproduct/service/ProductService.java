@@ -72,9 +72,9 @@ public class ProductService {
 	 public List<Product>findByPriceLessThan(Double price){
 		 return productRepository.findByPriceLessThan(price);
 	 }
-	 
+	 /*
 	 public Double findTotalPrice() {
 		 return productRepository.findTotalPrice();
 	 }
-
+*/
 }
