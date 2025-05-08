@@ -8,7 +8,7 @@ import * as yup from "yup";
 import {FormSchema} from "./FormSchema.tsx";
 
 const InventoryManager = () => {
-  const BASE_URL = 'http://localhost:8080/inventorymanagerproduct';
+  const BASE_URL = 'https://kassiano-santos.onrender.com/inventorymanagerproduct';
   const [formData,setFormData] = useState({
     id:"",
     productName: "",

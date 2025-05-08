@@ -12,6 +12,7 @@ import java.util.List;
 public class StartupRestClientRunner implements CommandLineRunner{
 	@Override
 	public void run(String... Args) throws Exception {
+		/*
 		System.out.println("RestClient running.");
 		
 		RestTemplate restTemplate = new RestTemplate();
@@ -24,5 +25,6 @@ public class StartupRestClientRunner implements CommandLineRunner{
 				+ "quantity: " + product.getQuantity() + " / Price: " + product.getPrice() + " / status: " 
 				+ product.getStatus())
 			);
+			*/
 	}
 }
