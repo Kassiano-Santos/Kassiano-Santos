@@ -16,18 +16,24 @@ const JavaProjectList = ()=> {
               <h3>Inventory Manager Product</h3>
           
               <p className={styles.textProjects}>
-                A project developed to help organize barbecues by calculating the 
-                necessary quantities and types of items based on the number of 
-                guests. In addition to React and JavaScript, we used the Formik 
-                and Yup libraries for form validation.
+              This project was developed to strengthen my skills in Java and 
+              Spring Boot. It features a RESTful API that uses SQLite as the 
+              database and provides full CRUD functionality for product 
+              registration and removal. The application simulates a basic 
+              inventory management system, with a clean and modular codebase 
+              suitable for further expansion.
+              The front-end was built using React and TypeScript, ensuring a 
+              modern, responsive user interface.
               </p>
+              
               <button className={styles.buttons}>React.js</button>
-              <button className={styles.buttons}>Javascript</button>
+              <button className={styles.buttons}>Typescript</button>
               {/*
               <button className={styles.buttons}>Formik</button>
               <button className={styles.buttons}>Yup</button>
               */}
               <button className={styles.buttons}>Java Spring Boot</button>
+              <button className={styles.buttons}>Java JDK22</button>
             </Link>
         </Grid>
     </Grid>
