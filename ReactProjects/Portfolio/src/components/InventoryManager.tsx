@@ -4,45 +4,38 @@ import styles from "./InventoryManager.module.css";
 import {Product} from "../types/Product";
 import  Grid from '@mui/material/Grid2';
 import { DataGrid, GridColDef,GridRowSelectionModel  } from '@mui/x-data-grid';
+import { Card, CardContent, Typography } from '@mui/material';
 import * as yup from "yup";
-import {FormSchema} from "./FormSchema.tsx";
+import { Formik } from 'formik';
+import { FormSchemaAdd, FormSchemaUpdateRemove, FormSchemaLoadFilds, 
+         initialValues, onSubmit,FormValues } from "./FormSchema.tsx";
+import axios from 'axios';
+
 
 const InventoryManager = () => {
   const BASE_URL = 'https://kassiano-santos.onrender.com/inventorymanagerproduct';
-  const [formData,setFormData] = useState({
-    id:"",
-    productName: "",
-    price:"",
-    quantity: "",
-    status:""
-  });
-
+  
   const [products, setProducts] = useState<Product[]>([]);
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [selectedId, setSelectedId] = useState<GridRowSelectionModel>({ type: 'include', ids: new Set()});
 
-  
-  useEffect(() => {
-    listAll();
-  },[]);
-
   const  listAll = async()=> {
-    const response = await fetch(BASE_URL);
-    const products: Product[] = await response.json();
-    
+    const response = await axios.get(BASE_URL); 
+    const products: Product[] = response.data;
     setProducts(products);
   }
 
-  const getProductsFromForm = ()=> {
-    return { 
-      id: formData.id,
-      productName: formData.productName, 
-      price: formData.price, 
-      quantity: formData.quantity, 
-      status: formData.status 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if(products.length === 0){
+        listAll();
+      }
+    }, 10000);
+    if(products.length > 0){
+      clearInterval(intervalId);
     }
-  }
- 
+    return () => clearInterval(intervalId);
+  },[products]);
+
   const columns : GridColDef[] = [
     { 
       field:'id', 
@@ -77,92 +70,16 @@ const InventoryManager = () => {
     }
   ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-    setErrors({ ...errors, [e.target.name]: "" }); 
+  type RenderInputProps = {
+    label: string;
+    name: keyof FormValues;
+    values: FormValues;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    errors: { [key: string]: string };
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await FormSchema.validate(formData, { abortEarly: false });
-    } catch (err: any) {
-      const newErrors: { [key: string]: string } = {};
-      err.inner.forEach((error: yup.ValidationError) => {
-        if (error.path) newErrors[error.path] = error.message;
-      });
-      setErrors(newErrors);
-    }
-  };
-
-   const add = async ()=> {
-			const product = getProductsFromForm();
-			await fetch(BASE_URL, {
-				method: 'POST',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify(product)
-			});
-			listAll();
-      clearFields();
-  }
-
-  const update = async ()=> {
-    const product = getProductsFromForm();
-    const id = product.id;
-    await fetch(`${BASE_URL}/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(product)
-    });
-    listAll(); 
-  }
-  const remove = async ()=> {
-    const product = getProductsFromForm();
-    const id = product.id;
-    await fetch(`${BASE_URL}/${id}`, { method: 'DELETE'});
-    listAll();
-    clearFields();
-  }
-
-  const clearFields = ()=> {
-    setFormData({
-      id: "",
-      productName: "",
-      price: "",
-      quantity: "",
-      status: ""
-    })
-  }
-
-  const loadFields =() => {
-    const product = getProductsFromForm();
-    let id: number | null = Number(product.id);
-
-    if(isNaN(id) || id === 0 || product.id === ""){
-      id = Array.from(selectedId.ids)[0] as number;
-    } else if(product.id !== "" && selectedId.ids.size > 0){
-      id = Array.from(selectedId.ids)[0] as number;
-    }
-    if(id !== null || id !== ""){
-      fetch(`${BASE_URL}/${id}`)
-		  .then(response => response.json())
-		  .then(product => {
-        setFormData({
-        id: product.id,
-        productName: product.productName,
-        price: product.price,
-        quantity: product.quantity,
-        status: product.status  
-        })
-		  });
-    }			
-  } 
-
-  const renderInput = (label: string, name: keyof typeof formData) => (
+  const renderInput = (
+    { label, name, values, handleChange, errors }: RenderInputProps) => (
     <Grid container spacing={2} className={styles[name]}>
       <Grid size="auto">
         <label>{label}</label>
@@ -171,7 +88,7 @@ const InventoryManager = () => {
         <input
           type="text"
           name={name}
-          value={formData[name]}
+          value={values[name]}
           onChange={handleChange}
           style={{
             borderColor: errors[name] ? "red" : undefined,
@@ -179,176 +96,289 @@ const InventoryManager = () => {
           }}
         />
         {errors[name] && (
-          <p style={{ color: "red", margin: 0 }}>{errors[name]}</p>
+          <p className= {styles.errors}>{errors[name]}</p>
         )}
       </Grid>
     </Grid>
   );
+  const runValidationAndSubmit = async (
+    formSchema: yup.ObjectSchema<any>, 
+    formValues: FormValues, 
+    action: () => void,
+    formikSetErrors: (errors: { [key: string]: string }) => void
+  ) => {
+  try {
+    await formSchema.validate(formValues, { abortEarly: false });
+    formikSetErrors ({});
+    action();
+  } catch (err: unknown) {
+    if (err instanceof yup.ValidationError) {
+      const newErrors: { [key: string]: string } = {};
+      err.inner.forEach((error) => {
+        if (error.path) newErrors[error.path] = error.message;
+      });
+      formikSetErrors(newErrors);
+    } else {
+      console.error("Erro inesperado:", err);
+    }
+  }
+};
+return (
+  <Formik 
+    initialValues={initialValues}
+    onSubmit={onSubmit}
+  >
+  {({ values, handleChange, errors,setErrors,setValues, resetForm }) => {
+      const loadFields = async (values: FormValues) => {
+        await new Promise((resolve) => setTimeout(resolve, 0));
+        let id: number | null = Number(values.id);
 
-  return(
-    <div className = {styles.container}>
-      <h1 className={styles.title}>Inventory Manager Product</h1>
+          if(isNaN(id) || id === 0 || values.id === ""){
+            id = Array.from(selectedId.ids)[0] as number;
+          } else if(values.id !== "" && selectedId.ids.size > 0){
+            id = Array.from(selectedId.ids)[0] as number;
+          }
+        const correctedValues = { ...values, id: id?.toString() ?? "" };
 
-      <form onSubmit={handleSubmit} className={styles.container}>
-        {renderInput("ID:", "id")}
-        {renderInput("Product Name:", "productName")}
-        {renderInput("Price:", "price")}
-        {renderInput("Quantity:", "quantity")}
-        {renderInput("Status:", "status")}
+        runValidationAndSubmit(
+          FormSchemaLoadFilds, correctedValues, async () => {
+          if(id){
+            fetch(`${BASE_URL}/${id}`)
+            .then(response => response.json())
+            .then(product => {
+              setValues({
+              id: product.id,
+              productName: product.productName,
+              price: product.price,
+              quantity: product.quantity,
+              status: product.status  
+              })
+            });
+          }		
+        },setErrors)
+      };
 
-        <Grid container spacing={2}>
-          <Grid size = "auto">
-            <button className={styles.addButton} onClick={add} type="submit" >Add</button>
-          </Grid>
-          <Grid size="auto">
-            <button className={styles.updateButton} onClick={update} type="submit">update</button>
-          </Grid>
-          <Grid size="auto">
-            <button className={styles.removeButton} onClick={remove}>remove</button>
-          </Grid>
-          <Grid size="auto">
-            <button className={styles.loadFieldsButton} type="button" onClick= {loadFields}>Load Fields</button>
-          </Grid>
-          <Grid size="auto">
-            <button className={styles.clearFieldsButton} type="button" onClick={clearFields}>Clear Fields</button>
-          </Grid>
-        </Grid>
+      const clearFields = () => {
+        resetForm();
+      };
       
-      {/** 
-      <Grid container spacing={2}className = {styles.id} >
-        <Grid size="auto">
-            <label>ID:</label>
-          </Grid>
-        <Grid size="auto">
-          <input 
-            type="text" 
-            name="id" 
-            value={formData.id}
-            onChange={(e) => handleChange(e)}
-          />
-        </Grid>
-      </Grid>
-      <Grid container spacing={2} className = {styles.productName}>
-        <Grid size="auto">
-          <label>Product Name:</label>
-        </Grid>
-        <Grid size="auto">
-          <input 
-            type="text" 
-            name="productName"  
-            value = {formData.productName}
-            onChange={(e) => handleChange(e)}
-          />
-        </Grid>
-      </Grid>
-      <Grid container spacing={2} className = {styles.price}>
-        <Grid size="auto">
-          <label>Price:</label>
-        </Grid>
-        <Grid size="auto">
-        <input 
-          type="text" 
-          name="price"  
-          value = {formData.price}
-          onChange={(e) => handleChange(e)}
-        />
-        </Grid>
-      </Grid>
-      <Grid container spacing={2} className = {styles.quantity}>
-        <Grid size="auto">
-          <label>Quantity:</label>
-        </Grid>
-        <Grid size="auto">
-          <input 
-            type="text" 
-            name="quantity"  
-            value = {formData.quantity}
-            onChange={(e)=> handleChange(e)}
-          />
-        </Grid>
-      </Grid>
-      <Grid container spacing={2} className = {styles.status}>
-        <Grid size="auto">
-          <label>Status:</label>
-        </Grid>
-        <Grid size="auto">
-          <input 
-            type="text" 
-            name="status"  
-            value = {formData.status}
-            onChange={(e)=> handleChange(e)}
-          />
-        </Grid>
-      </Grid>
+      const add = async (values: FormValues)=> {
+        await new Promise((resolve) => setTimeout(resolve, 0));
 
-      <Grid container spacing={2}>
-        <Grid size = "auto">
-          <button className={styles.addButton} onClick={add}>Add</button>
-        </Grid>
-        <Grid size="auto">
-          <button className={styles.updateButton} onClick={update}>update</button>
-        </Grid>
-        <Grid size="auto">
-          <button className={styles.removeButton} onClick={remove}>remove</button>
-        </Grid>
-        <Grid size="auto">
-          <button className={styles.loadFieldsButton} onClick= {loadFields}>Load Fields</button>
-        </Grid>
-        <Grid size="auto">
-          <button className={styles.clearFieldsButton} onClick={clearFields}>Clear Fields</button>
-        </Grid>
-      </Grid>
-      */}
-      <Grid container spacing={2} className ={styles.productList}>
-        <Grid size = {{xs: 12}}>
-          <h2>Products List</h2>
-      </Grid>
-      
-      <div style={{ maxWidth: '670px', width: '100%' }}>
-        <DataGrid
-          className= {styles.dataGrid}
-          rows={products}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 5,
-              },
-            },
-          }}
-          rowSelectionModel={selectedId}
-          onRowSelectionModelChange={(newSelectionModel) => {
-            setSelectedId(newSelectionModel);
-          }}
-          pageSizeOptions={[5]}
-          sx={{
-            '& .headerField': {
-            backgroundColor: '#0a192f',
-            },
-            '&& .MuiTablePagination-root': {
-              color:'#ddd',
-            },
-            '&& .MuiDataGrid-sortIcon': {
-              color: '#ddd',
-            },
-            '&& .MuiDataGrid-row:hover': {
-              backgroundColor: 'rgba(145, 146, 174, 0.7)', // substitua pela cor que quiser
-            },
-            '& .MuiDataGrid-row.Mui-selected': {
-              backgroundColor: 'rgba(145, 146, 174, 0.7)', // cor da linha selecionada
-            },
-            height: 370,
-            backgroundColor: '#0a192f',
-            color: '#ddd',
-          }}
-        />
-      </div>
-        <Grid size={{xs:12}}>
-          <p>Total de produtos: {products.length}</p>
-        </Grid>
-      </Grid>  
-      </form>  
-    </div>    
-  )
-}
+        runValidationAndSubmit(FormSchemaAdd, values, async () => {
+          try {
+            await axios.post(BASE_URL,values, {
+              headers: {'Content-Type': 'application/json'}
+            });
+            listAll();
+            clearFields();
+          } catch (error: any) {
+            setErrors(error);
+          }
+        },setErrors)
+      };
+          
+      const update = async (values: FormValues)=> {
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        runValidationAndSubmit(FormSchemaUpdateRemove,values, async () => {
+          let id: number | null = Number(values.id);
+
+          if(isNaN(id) || id === 0 || values.id === "") {
+            id = Array.from(selectedId.ids)[0] as number;
+          } else if(values.id !== "" && selectedId.ids.size > 0){
+            id = Array.from(selectedId.ids)[0] as number;
+          }
+
+          if(id){
+            try{
+              await axios.put(`${BASE_URL}/${id}`, values, {
+                headers: { 'Content-Type': 'application/json'}
+              });
+              listAll(); 
+            }catch(error: any) {
+              setErrors(error);
+            }
+          }
+        },setErrors)
+      }
+
+      const remove = async (values: FormValues)=> {
+        await new Promise((resolve) => setTimeout(resolve, 0));
+
+        runValidationAndSubmit(FormSchemaUpdateRemove,values, async () => {
+          let id: number | null = Number(values.id);
+
+          if(isNaN(id) || id === 0 || values.id === ""){
+            id = Array.from(selectedId.ids)[0] as number;
+          } else if(values.id !== "" && selectedId.ids.size > 0){
+            id = Array.from(selectedId.ids)[0] as number;
+          } 
+          if(id){
+            try {
+              await axios.delete(`${BASE_URL}/${id}`);
+              listAll();
+              clearFields();
+            } catch (error: any) {
+              setErrors(error)
+            }
+          }
+        },setErrors)
+      }
+      const isLoading = products.length === 0;
+
+      return (
+        <div className = {styles.container}>
+          <h1 className={styles.title}>Inventory Manager Product</h1>
+          
+            <form className={styles.container}>
+              {renderInput({ label: "ID:", 
+                             name: "id", 
+                             values, 
+                             handleChange, 
+                             errors 
+                          })}
+              {renderInput({ label: "Product Name:", 
+                             name: "productName", 
+                             values, 
+                             handleChange, 
+                             errors 
+                          })}
+              {renderInput({ label: "Price:", 
+                             name: "price", 
+                             values, 
+                             handleChange, 
+                             errors 
+                          })}
+              {renderInput({ label: "Quantity:", 
+                             name: "quantity", 
+                             values, 
+                             handleChange, 
+                             errors 
+                          })}
+              {renderInput({ label: "Status:", 
+                             name: "status", 
+                             values, 
+                             handleChange, 
+                             errors 
+                          })}
+              <Grid container spacing={2}>
+                <Grid size = "auto">
+                  <button type="button" 
+                          className={styles.addButton} 
+                          onClick={() => add(values)}
+                  >
+                    Add
+                  </button>
+                </Grid>
+                <Grid size="auto">
+                  <button type="button" 
+                          className={styles.updateButton} 
+                          onClick={() => update(values)}
+                  >
+                    update
+                  </button>
+                </Grid>
+                <Grid size="auto">
+                  <button type="button" 
+                          className={styles.removeButton} 
+                          onClick={() => remove(values)}
+                  >
+                    remove
+                  </button>
+                </Grid>
+                <Grid size="auto">
+                  <button className={styles.loadFieldsButton} 
+                          type="button" 
+                          onClick= {() => loadFields(values)}
+                  >
+                    Load Fields
+                  </button>
+                </Grid>
+                <Grid size="auto">
+                  <button 
+                    className={styles.clearFieldsButton} 
+                    type="button" 
+                    onClick={() => {
+                      clearFields();
+                      setErrors({});
+                    }}
+                  >
+                      Clear Fields
+                  </button>
+                </Grid>
+              </Grid>
+            <Grid container spacing={2} className ={styles.productList}>
+              <Grid size = {{xs: 12}}>
+                <h2>Products List</h2>
+            </Grid>
+            
+            <Grid container spacing={2}>
+              <Grid sx={{ maxWidth: '670px', width: '100%' }} size = {{xs:6}}>
+                <DataGrid
+                  className= {styles.dataGrid}
+                  rows={products}
+                  columns={columns}
+                  initialState={{
+                    pagination: {
+                      paginationModel: {
+                        pageSize: 5,
+                      },
+                    },
+                  }}
+                  rowSelectionModel={selectedId}
+                  onRowSelectionModelChange={(newSelectionModel) => {
+                    setSelectedId(newSelectionModel);
+                  }}
+                  pageSizeOptions={[5]}
+                  sx={{
+                    '& .headerField': {
+                    backgroundColor: '#0a192f',
+                    },
+                    '&& .MuiTablePagination-root': {
+                      color:'#ddd',
+                    },
+                    '&& .MuiDataGrid-sortIcon': {
+                      color: '#ddd',
+                    },
+                    '&& .MuiDataGrid-row:hover': {
+                      backgroundColor: 'rgba(145, 146, 174, 0.7)', 
+                    },
+                    '& .MuiDataGrid-row.Mui-selected': {
+                      backgroundColor: 'rgba(145, 146, 174, 0.7)', 
+                    },
+                    height: 370,
+                    backgroundColor: '#0a192f',
+                    color: '#ddd',
+                  }}
+                />
+              </Grid>
+              <Grid size = {{xs:6}}>
+                {isLoading && (
+                <Card sx={{ minWidth: 250, backgroundColor: '#1e293b', color: '#fff' }}>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                    Wait...
+                    </Typography>
+                    <Typography variant="body2">
+                      The server may take a few minutes to respond after a
+                      period of inactivity.
+                      This is normal due to the free web hosting service. 
+                      Please wait approximately 1 minutes for the list to load.
+                    </Typography>
+                  </CardContent>
+                </Card>
+                )}
+              </Grid>
+            </Grid>
+              <Grid size={{xs:12}}>
+                <p>Total products: {products.length}</p>
+              </Grid>
+            </Grid> 
+            </form> 
+        </div> 
+      );
+    }}
+  </Formik> 
+)}
 export default InventoryManager;

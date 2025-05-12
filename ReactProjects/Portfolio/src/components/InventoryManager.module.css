@@ -44,27 +44,32 @@ input {
   display: flex;
   height: 40px; 
   align-items: center;
+  margin-bottom: 20px;
 }
 .productName {
   display: flex;
   height: 40px; 
   align-items: center;
+  margin-bottom: 20px;
 }
 .price {
   display: flex;
   height: 40px; 
   align-items: center;
+  margin-bottom: 20px;
 }
 .quantity {
   display: flex;
   height: 40px; 
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .status {
   display: flex;
   height: 40px; 
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .productList {
@@ -74,6 +79,10 @@ input {
 .dataGrid {
 color: #ddd;
 background-color: #0a192f;
+}
+.errors{
+  color: red;
+  margin: 0;
 }
 
 
