@@ -28,10 +28,8 @@ const JavaProjectList = ()=> {
               
               <button className={styles.buttons}>React.js</button>
               <button className={styles.buttons}>Typescript</button>
-              {/*
               <button className={styles.buttons}>Formik</button>
               <button className={styles.buttons}>Yup</button>
-              */}
               <button className={styles.buttons}>Java Spring Boot</button>
               <button className={styles.buttons}>Java JDK22</button>
             </Link>

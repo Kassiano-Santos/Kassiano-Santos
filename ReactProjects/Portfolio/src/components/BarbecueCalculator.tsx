@@ -33,36 +33,36 @@ const BarbecueCalculator = ()=> {
       {/*/The initial state will not be defined by useState but in the form*/}
       <h1 className={styles.barbecueTitle}>Barbecue Calculator</h1>
       <Formik 
-      initialValues={{persons:0, foodSelected: []}} 
-      validationSchema={validationScheme}
-      onSubmit={(values) => {
-      navigate("/result", {
-        state: {
-          persons: values.persons,
-          foodSelected: values.foodSelected,
-        }
-      });
-      }}>
+        initialValues={{persons:0, foodSelected: []}} 
+        validationSchema={validationScheme}
+        onSubmit={(values) => {
+          navigate("/result", {
+            state: {
+              persons: values.persons,
+              foodSelected: values.foodSelected,
+            }
+          });
+        }}>
        {({ errors, touched }) => (
          <Form>
-         <div className={styles.inputGroup}>
-           <label htmlFor="persons" className={styles.inputLabel}>Quantity Person</label>
-           <Field name="persons" type="number" min="0" className= {styles.inputField}/>
-           {errors.persons && touched.persons ? (
-            <p className={styles.error}>{errors.persons}</p>
-          ) : null}
-         </div>
-         <h2 className={styles.text}>Select the food for Barbecue:</h2>
-         {Object.keys(foodName).map((food) => (
+          <div className={styles.inputGroup}>
+            <label htmlFor="persons" className={styles.inputLabel}>Quantity Person</label>
+            <Field name="persons" type="number" min="0" className= {styles.inputField}/>
+            {errors.persons && touched.persons ? (
+              <p className={styles.error}>{errors.persons}</p>
+            ) : null}
+          </div>
+          <h2 className={styles.text}>Select the food for Barbecue:</h2>
+          {Object.keys(foodName).map((food) => (
            <div key= {food}>
-            <label className={styles.text}>
-             <Field 
-             type= "checkbox"
-             name= "foodSelected" 
-             value= {food}
-             className={styles.checkboxInput}
-             />
-              {foodName[food]}
+              <label className={styles.text}>
+                <Field 
+                  type= "checkbox"
+                  name= "foodSelected" 
+                  value= {food}
+                  className={styles.checkboxInput}
+                />
+                {foodName[food]}
               </label>
            </div>
          ))}
