@@ -29,7 +29,7 @@ const InventoryManager = () => {
       if(products.length === 0){
         listAll();
       }
-    }, 10000);
+    }, 5000);
     if(products.length > 0){
       clearInterval(intervalId);
     }
@@ -180,16 +180,23 @@ return (
           
       const update = async (values: FormValues)=> {
         await new Promise((resolve) => setTimeout(resolve, 0));
-
-        runValidationAndSubmit(FormSchemaUpdateRemove,values, async () => {
-          let id: number | null = Number(values.id);
+        let id: number | null = Number(values.id);
 
           if(isNaN(id) || id === 0 || values.id === "") {
             id = Array.from(selectedId.ids)[0] as number;
           } else if(values.id !== "" && selectedId.ids.size > 0){
             id = Array.from(selectedId.ids)[0] as number;
           }
+          if (!id || isNaN(id)) {
+            setErrors({ id: "É necessário informar um ID ou selecionar uma linha." });
+            return;
+          }
+          const valuesToValidate: FormValues = {
+            ...values,
+            id: String(id) ?? "", 
+          };
 
+        runValidationAndSubmit(FormSchemaUpdateRemove,valuesToValidate, async () => {
           if(id){
             try{
               await axios.put(`${BASE_URL}/${id}`, values, {
@@ -205,15 +212,24 @@ return (
 
       const remove = async (values: FormValues)=> {
         await new Promise((resolve) => setTimeout(resolve, 0));
-
-        runValidationAndSubmit(FormSchemaUpdateRemove,values, async () => {
-          let id: number | null = Number(values.id);
+        let id: number | null = Number(values.id);
 
           if(isNaN(id) || id === 0 || values.id === ""){
             id = Array.from(selectedId.ids)[0] as number;
-          } else if(values.id !== "" && selectedId.ids.size > 0){
+          } 
+          else if(values.id !== "" && selectedId.ids.size > 0){
             id = Array.from(selectedId.ids)[0] as number;
           } 
+          if (!id || isNaN(id)) {
+            setErrors({ id: "É necessário informar um ID ou selecionar uma linha." });
+            return;
+          }
+          const valuesToValidate: FormValues = {
+            ...values,
+            id: String(id) ?? "", 
+          };
+          
+        runValidationAndSubmit(FormSchemaUpdateRemove,valuesToValidate, async () => {
           if(id){
             try {
               await axios.delete(`${BASE_URL}/${id}`);
@@ -230,7 +246,6 @@ return (
       return (
         <div className = {styles.container}>
           <h1 className={styles.title}>Inventory Manager Product</h1>
-          
             <form className={styles.container}>
               {renderInput({ label: "ID:", 
                              name: "id", 
@@ -320,6 +335,11 @@ return (
                   rows={products}
                   columns={columns}
                   initialState={{
+                    sorting: {
+                      sortModel: [
+                        { field: 'id', sort: 'desc' } // ordena pelo campo 'id' em ordem decrescente
+                      ],
+                    },
                     pagination: {
                       paginationModel: {
                         pageSize: 5,
@@ -358,7 +378,7 @@ return (
                 <Card sx={{ minWidth: 250, backgroundColor: '#1e293b', color: '#fff' }}>
                   <CardContent>
                     <Typography variant="h6" gutterBottom>
-                    Wait...
+                      Wait...
                     </Typography>
                     <Typography variant="body2">
                       The server may take a few minutes to respond after a
