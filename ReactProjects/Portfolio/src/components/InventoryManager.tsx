@@ -384,7 +384,7 @@ return (
                       The server may take a few minutes to respond after a
                       period of inactivity.
                       This is normal due to the free web hosting service. 
-                      Please wait approximately 1 minutes for the list to load.
+                      Please wait approximately 3 minutes for the list to load.
                     </Typography>
                   </CardContent>
                 </Card>
