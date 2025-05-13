@@ -23,11 +23,11 @@ public class ShoppingListProject extends Application {
 	public void start(Stage stage) {
 		stage.setTitle("Shopping List App");
 		TextField textFieldDescItem = new TextField();
-		Button addButton = new Button("Adicionar");
+		Button addButton = new Button("Add");
 		Button exportButton = new Button("Export List");
 		
 		Label addLabel = new Label("Type the item you want to add");
-		Label labelProductList = new Label("Lista de Compras:");
+		Label labelProductList = new Label("Shopping List:");
 		
 		ObservableList<String> observableProductList = FXCollections.observableArrayList(shoppingList);
 		visualizableList.setItems(observableProductList);
@@ -56,7 +56,7 @@ public class ShoppingListProject extends Application {
 				}
 				writer.close();
 			} catch (Exception ex){
-				System.out.println("Erro ocorrido: " + ex.getMessage());
+				System.out.println("Error occurred: " + ex.getMessage());
 			}
 		});
 		Scene scene = new Scene(vBox, 350,300);

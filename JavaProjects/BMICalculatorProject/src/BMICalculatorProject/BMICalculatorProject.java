@@ -23,7 +23,7 @@ public class BMICalculatorProject extends Application {
 	   //Label to display BMI result
 	   Label labelResult = new Label();
 	   
-	   Button bmiCalculateButton = new Button("Calculate BMI: ");
+	   Button bmiCalculateButton = new Button("Calculate BMI ");
 	   
 	   bmiCalculateButton.setOnAction(e -> {
 		   try {
