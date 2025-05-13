@@ -119,7 +119,7 @@ const InventoryManager = () => {
       });
       formikSetErrors(newErrors);
     } else {
-      console.error("Erro inesperado:", err);
+      console.error("Unexpected error:", err);
     }
   }
 };
@@ -188,7 +188,7 @@ return (
             id = Array.from(selectedId.ids)[0] as number;
           }
           if (!id || isNaN(id)) {
-            setErrors({ id: "É necessário informar um ID ou selecionar uma linha." });
+            setErrors({ id: "You must enter an ID or select a line." });
             return;
           }
           const valuesToValidate: FormValues = {
@@ -221,7 +221,7 @@ return (
             id = Array.from(selectedId.ids)[0] as number;
           } 
           if (!id || isNaN(id)) {
-            setErrors({ id: "É necessário informar um ID ou selecionar uma linha." });
+            setErrors({ id: "You must enter an ID or select a line." });
             return;
           }
           const valuesToValidate: FormValues = {
@@ -337,7 +337,7 @@ return (
                   initialState={{
                     sorting: {
                       sortModel: [
-                        { field: 'id', sort: 'desc' } // ordena pelo campo 'id' em ordem decrescente
+                        { field: 'id', sort: 'desc' } 
                       ],
                     },
                     pagination: {
@@ -384,7 +384,7 @@ return (
                       The server may take a few minutes to respond after a
                       period of inactivity.
                       This is normal due to the free web hosting service. 
-                      Please wait approximately 1 minutes for the list to load.
+                      Please wait approximately 3 minutes for the list to load.
                     </Typography>
                   </CardContent>
                 </Card>
