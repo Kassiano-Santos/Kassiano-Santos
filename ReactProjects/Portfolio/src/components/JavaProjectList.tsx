@@ -1,7 +1,7 @@
 import  Grid from '@mui/material/Grid2';
 import styles from './JavaProjectList.module.css';
 import { Link } from "react-router-dom";
-import {ProductInventoryVideo, ClimatesInformationVideo, ShoppingListVideo} from './DemoModal';
+import {ProductInventoryVideo, ClimatesInformationVideo, ShoppingListVideo} from './VideoComponent';
 import { ArrowDownToLine } from "lucide-react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 
