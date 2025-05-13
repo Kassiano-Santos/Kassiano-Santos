@@ -21,7 +21,7 @@ public class ClimateInformationProject {
 		try {
 			String climatesDate = getClimatesDate(city);
 			if(climatesDate.contains("\"code\":1006")) {
-				System.out.println("Localização não encontrada. Por favor tente novamente.");
+				System.out.println("Location not found. Please try again.");
 			}else {
 				printClimatesDate(climatesDate);
 			}
@@ -45,9 +45,9 @@ public class ClimateInformationProject {
 		return response.body();
 	}
 	
-	public static void printClimatesDate(String dados) {
+	public static void printClimatesDate(String data) {
 		
-		JSONObject jsonDate = new JSONObject(dados);
+		JSONObject jsonDate = new JSONObject(data);
 		JSONObject weatherInfo = jsonDate.getJSONObject("current");
 		String city = jsonDate.getJSONObject("location").getString("name");
 		String country = jsonDate.getJSONObject("location").getString("country");

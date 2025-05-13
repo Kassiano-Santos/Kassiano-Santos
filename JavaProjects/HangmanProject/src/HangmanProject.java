@@ -7,9 +7,9 @@ public class HangmanProject {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner (System.in);
 		ArrayList<String> secretWords = new ArrayList<>(); //Este arrayList irá conter 3 plavaras secretas
-		secretWords.add("cobra");// cobra está no indice zero e tem 5 letras
-		secretWords.add("elefante");
-		secretWords.add("girafa");
+		secretWords.add("snake");// cobra está no indice zero e tem 5 letras
+		secretWords.add("elephant");
+		secretWords.add("giraffe");
 		
 		Random random = new Random();
 		int arrayListSize = secretWords.size();
@@ -22,13 +22,13 @@ public class HangmanProject {
 			uncovdLetters.add('_');
 		}
 		
-		int attempts = 6;
+		int attempts = 3;
 		boolean discoveredLetter = false;
 		
 		while(!discoveredLetter && attempts> 0) {
 			System.out.println();
-			System.out.println("Palavra: " + uncovdLetters);
-			System.out.print("Chute uma letra: ");
+			System.out.println("Word: " + uncovdLetters);
+			System.out.print("Guess a letter: ");
 			char guess = scanner.next().charAt(0);
 			
 			boolean gotIt = false;

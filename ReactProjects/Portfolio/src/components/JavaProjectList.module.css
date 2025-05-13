@@ -1,3 +1,26 @@
+.icon {
+  font-size: 25px;
+  margin-right:20px ;
+}
+.LinkJavaProjectsJar{
+  margin-top: 20px;
+  align-items: center;
+  
+}
+.LinkJavaProjectsVideo{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.LinkJavaProjects {
+  color: #5dcfa7;
+  font-family: "lora";
+  padding: 10px;
+  text-decoration: none;
+}
+.LinkJavaProjects:hover {
+  color: #5856e6;
+  transition: 0.3s;
+}
 .title {
   font-family: "Roboto";
   font-size: 35px;
