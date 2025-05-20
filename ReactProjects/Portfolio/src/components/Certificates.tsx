@@ -11,12 +11,15 @@ import FileReactCertificatePT from './FileReactCertificatePT.tsx';
 import FileEnglishCourseJP from './FileEnglishCourseJP.tsx';
 import FileEnglishCourseEN from './FileEnglishCourseEN.tsx';
 import FileJlptCertificate from './FileJlptCertificate.tsx';
+import FileJavaCourseEN from './FileJavaCourseEN.tsx';
+import FileJavaCourseJP from './FileJavaCourseJP.tsx';
+import FileJavaCoursePT from './FileJavaCoursePT.tsx';
 
 const Certificates= ()=> {
   const [language1, setLanguage1] = useState("");
   const [language2, setLanguage2] = useState("");
   const [language3, setLanguage3] = useState("");
-
+  const [language4, setLanguage4] = useState("");
 
    return (
     <div>
@@ -44,6 +47,23 @@ const Certificates= ()=> {
       </Grid>
 
       <Grid size = {12} className={styles.certificateList}>
+       <h3 className={styles.subtitleCerticates}>English Course:</h3>
+        <select 
+          value={language3} 
+          onChange={(e)=> setLanguage3(e.target.value)}
+          className={styles.selectStyle}
+        >
+          <option>Language</option>
+          <option>English</option>
+          <option>Japanese</option>
+          <option>Portuguese</option>
+        </select>
+        {language3 == "English" ? <FileEnglishCourseEN /> : ""}
+        {language3 == "Japanese" ? <FileEnglishCourseJP /> : ""}
+        {language3 == "Portuguese" ? <FileEnglishCoursePT /> : ""}
+      </Grid>
+
+      <Grid size = {12} className={styles.certificateList}>
           <h3 className={styles.subtitleCerticates}>React Certificate: </h3>
           <select 
             value={language2} 
@@ -60,11 +80,11 @@ const Certificates= ()=> {
           {language2 == "Japanese"? <FileReactCertificateJP /> : ""}
           {language2 == "Portuguese"? <FileReactCertificatePT /> : ""}
        </Grid>
-      <Grid size = {12} className={styles.certificateList}>
-       <h3 className={styles.subtitleCerticates}>English Course:</h3>
+       <Grid size = {12} className={styles.certificateList}>
+       <h3 className={styles.subtitleCerticates}>Java/Spring Boot Certificate:</h3>
         <select 
-          value={language3} 
-          onChange={(e)=> setLanguage3(e.target.value)}
+          value={language4} 
+          onChange={(e)=> setLanguage4(e.target.value)}
           className={styles.selectStyle}
         >
           <option>Language</option>
@@ -72,10 +92,9 @@ const Certificates= ()=> {
           <option>Japanese</option>
           <option>Portuguese</option>
         </select>
-        {language3 == "English"? <FileEnglishCourseEN /> : ""}
-        {language3 == "Japanese"? <FileEnglishCourseJP /> : ""}
-        {language3 == "Portuguese"? <FileEnglishCoursePT /> : ""}
-        
+        {language4 == "English" ? <FileJavaCourseEN /> : ""}
+        {language4 == "Japanese" ? <FileJavaCourseJP /> : ""}
+        {language4 == "Portuguese" ? <FileJavaCoursePT /> : ""}
       </Grid>
     </div>
   )
