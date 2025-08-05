@@ -21,7 +21,7 @@ const WebThema = ()=>{
           <Grid size={{xl: 4,sm:12, xs: 12}} className={styles.fixedGrid}>
             <Grid size={{xl: 12, xs: 12}} ref = {projectListRef}>
               <h1 className={styles.name}>Kassiano Santos</h1>
-              <h2 className={styles.dev}>Junior Developer</h2>
+              <h2 className={styles.dev}>Developer</h2>
             </Grid>
             <Grid size= {{xl: 4, xs: 12}} >
               <Grid className= {styles.linkItem}>
