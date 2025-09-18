@@ -21,7 +21,6 @@ const Certificates= ()=> {
   const [language2, setLanguage2] = useState("");
   const [language3, setLanguage3] = useState("");
   const [language4, setLanguage4] = useState("");
-  const [language5, setLanguage5] = useState("");
 
    return (
     <div>
@@ -93,7 +92,7 @@ const Certificates= ()=> {
           </h3>
           <MetaCourseCertificate />          
        </Grid>
-       
+
        <Grid size = {12} className={styles.certificateList}>
        <h3 className={styles.subtitleCerticates}>
         Java/Spring Boot Certificate:
