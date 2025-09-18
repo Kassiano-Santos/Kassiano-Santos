@@ -14,18 +14,22 @@ import FileJlptCertificate from './FileJlptCertificate.tsx';
 import FileJavaCourseEN from './FileJavaCourseEN.tsx';
 import FileJavaCourseJP from './FileJavaCourseJP.tsx';
 import FileJavaCoursePT from './FileJavaCoursePT.tsx';
+import MetaCourseCertificate from './FileReactAdvancedCourse.tsx';
 
 const Certificates= ()=> {
   const [language1, setLanguage1] = useState("");
   const [language2, setLanguage2] = useState("");
   const [language3, setLanguage3] = useState("");
   const [language4, setLanguage4] = useState("");
+  const [language5, setLanguage5] = useState("");
 
    return (
     <div>
       <h1 className={styles.titleCertificate}>Certificates:</h1>
         <Grid size = {12} className={styles.certificateList}>
-          <h3 className={styles.subtitleCerticates}>Computer Science High School:</h3>
+          <h3 className={styles.subtitleCerticates}>
+            Computer Science High School:
+          </h3>
           <select 
             value={language1} 
             onChange={(e)=> setLanguage1(e.target.value)}
@@ -42,7 +46,9 @@ const Certificates= ()=> {
         </Grid>
 
       <Grid size = {12} className={styles.certificateList}>
-        <h3 className={styles.subtitleCerticates}>Japanese Proeficiency Test:</h3>
+        <h3 className={styles.subtitleCerticates}>
+          Japanese Proeficiency Test:
+        </h3>
         <FileJlptCertificate />
       </Grid>
 
@@ -80,8 +86,18 @@ const Certificates= ()=> {
           {language2 == "Japanese"? <FileReactCertificateJP /> : ""}
           {language2 == "Portuguese"? <FileReactCertificatePT /> : ""}
        </Grid>
+
        <Grid size = {12} className={styles.certificateList}>
-       <h3 className={styles.subtitleCerticates}>Java/Spring Boot Certificate:</h3>
+          <h3 className={styles.subtitleCerticates}> 
+            Meta - React Advanced Course Certificate: 
+          </h3>
+          <MetaCourseCertificate />          
+       </Grid>
+       
+       <Grid size = {12} className={styles.certificateList}>
+       <h3 className={styles.subtitleCerticates}>
+        Java/Spring Boot Certificate:
+       </h3>
         <select 
           value={language4} 
           onChange={(e)=> setLanguage4(e.target.value)}
