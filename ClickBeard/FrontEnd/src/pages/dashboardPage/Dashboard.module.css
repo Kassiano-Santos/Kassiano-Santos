@@ -1,0 +1,100 @@
+.appointmentCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 600px;
+}
+
+.statusScheduled {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.statusCancelled {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.statusCompleted {
+  color: #0088ff;
+  font-weight: bold;
+}
+
+.cancelBtn{
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 140px; 
+  text-align: center;
+  background-color: #dc3545;
+  color: white;
+}
+
+.confirmBtn {
+  background-color: #18e051;
+  color: #333;
+}
+
+.cancelBtn:hover {
+  background-color: #c82333;
+}
+
+.confirmBtn:hover {
+  background-color: #49b868;
+}
+
+.header {
+  display: flex;
+}
+.title {
+  flex: 1;
+  text-align: left;
+}
+.logoutBtn{
+  background-color: #9CA3AF;
+}
+.espesBtn{
+  background-color: #7e87e6;
+  color: white;
+} 
+
+.barbBtn{
+  background-color: #57b8f9;
+  color: white;
+}
+
+.logoutBtn, .espesBtn, .barbBtn, .confirmBtn  {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  align-items: center;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.logoutBtn:hover {
+  background-color: #374151;
+}
+
+.barbBtn:hover {
+  background-color: #4787ed
+}
+
+.espesBtn:hover{
+  background-color: #6268b0;
+}
+.buttonContainer {
+  display: flex; 
+  gap: 10px; 
+  margin-top: 15px;
+  flex-wrap: wrap; 
+}

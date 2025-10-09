@@ -1,0 +1,44 @@
+CREATE TYPE appoint_status_enum AS ENUM ('scheduled', 'cancelled', 'done');
+
+CREATE TABLE users (
+	id_user SERIAL PRIMARY KEY,
+	name_user VARCHAR(100) NOT NULL,
+	email_user VARCHAR(100) UNIQUE NOT NULL,
+	password_hash VARCHAR(255) NOT NULL,
+	role_user VARCHAR(100) NOT NULL DEFAULT 'client',
+	is_active BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+CREATE TABLE barbers (
+	id_barber SERIAL PRIMARY KEY,
+	name_barbers VARCHAR(100) NOT NULL,
+	age_barber INT NOT NULL,
+	hire_date DATE NOT NULL 
+);
+
+CREATE TABLE specialties (
+	id_specialties SERIAL PRIMARY KEY,
+	name_specialties VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE barber_specialties (
+	id_specialties INT NOT NULL,
+	id_barber INT NOT NULL,
+
+	PRIMARY KEY (id_specialties, id_barber),
+	FOREIGN KEY (id_specialties) REFERENCES specialties(id_specialties) ON DELETE CASCADE,
+	FOREIGN KEY (id_barber) REFERENCES barbers(id_barber) ON DELETE CASCADE
+);
+
+CREATE TABLE appointments (
+	id_appointments SERIAL PRIMARY KEY,
+	id_user INT NOT NULL,
+	id_barber INT NOT NULL,
+	id_specialties INT NOT NULL,
+	appoint_date TIMESTAMP NOT NULL,
+	appoint_status appoint_status_enum NOT NULL,
+
+	CONSTRAINT fk_user FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE,
+	CONSTRAINT fk_barbers FOREIGN KEY (id_barber) REFERENCES barbers(id_barber) ON DELETE CASCADE,
+	CONSTRAINT fk_specialties FOREIGN KEY (id_specialties) REFERENCES specialties(id_specialties) ON DELETE CASCADE
+);

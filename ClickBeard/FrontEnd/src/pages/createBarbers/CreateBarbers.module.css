@@ -1,0 +1,156 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  display: flex;
+  align-items: center; 
+  font-weight: bold;
+  margin-bottom: 0; 
+  width: 40%; 
+  min-width: 120px;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.formInput {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-left: 10px; 
+}
+
+.formSelect {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px; 
+  box-sizing: border-box;
+}
+
+.formSelect:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.submitBtn {
+  padding: 12px;
+  background-color: #6eff97;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.submitBtn:hover {
+  background-color: #51b96e;
+}
+
+.submitBtn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.success {
+  color: green;
+  background-color: #f0fff4;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border-left: 4px solid #38a169;
+  font-weight: bold;
+}
+
+.small{
+  color: gray;
+  font-size: 12px;
+  margin-bottom: 2em;
+  margin-top: 5px;
+  display: block;
+}
+.dateSmall{
+  color: green;
+  font-size: '12px';
+  display: 'block'
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.backBtn {
+  position: fixed;
+  left: 20px;
+  padding: 8px 16px;
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.backBtn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.title {
+  text-align: center;
+}
+
+.small{
+  color: gray;
+  font-size: 12px;
+  margin-bottom: 2em;
+  margin-top: 5px;
+  display: block;
+  text-align: left;
+}

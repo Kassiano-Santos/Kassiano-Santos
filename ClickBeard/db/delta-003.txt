@@ -1,0 +1,77 @@
+
+-- criação de usuário
+-- Todas as senhas abaixo são 123456
+INSERT INTO users (name_user, email_user, password_hash, role_user)
+VALUES 
+('João Silva', 'joao@email.com', '$2b$10$gzHab7uGmk5B5vxZwTZYfOeJMT/J906nBCPdLUbXufq1xRW90CDD2', 'client'),
+('Maria', 'maria@email.com', '$2b$10$gzHab7uGmk5B5vxZwTZYfOeJMT/J906nBCPdLUbXufq1xRW90CDD2', 'client'),
+
+INSERT INTO users (name_user, email_user, password_hash, role_user) 
+VALUES 
+('Admin', 
+  'admin@clickbeard.com', 
+  '$2b$10$gzHab7uGmk5B5vxZwTZYfOeJMT/J906nBCPdLUbXufq1xRW90CDD2',  -- Senha: 123456
+  'admin'
+);
+
+--criação de barbeiros
+INSERT INTO barbers (name_barbers, age_barber, hire_date)
+VALUES 
+('Pedro Augusto', 30, to_date('25/09/2000', 'dd/mm/yyyy')),
+('Luiz', 19, to_date('25/09/2022', 'dd/mm/yyyy')),
+('Pablo', 28, to_date('25/09/2014', 'dd/mm/yyyy'));
+
+--Criação de especialidades
+INSERT INTO specialties (name_specialties)
+VALUES 
+('Barba'),
+('Corte de Tesoura'),
+('Corte de Máquina'),
+('Sombrancelha');
+
+--ligação barbeiro e especialidade
+INSERT INTO barber_specialties (id_specialties, id_barber)
+VALUES
+(1, 2),
+(1, 3),
+(3, 1),
+(3, 3);
+
+--Criação de apontamentos
+INSERT INTO appointments (id_user, id_barber, id_specialties, appoint_date, appoint_status)
+VALUES
+(1,1,2, to_date('06/10/2025 17:30:00','dd/mm/yyyy hh24:mm:ss'), 'scheduled'),
+(3,3,1,to_date('06/10/2025 17:30:00','dd/mm/yyyy hh24:mm:ss'), 'scheduled'),
+(4,2,1,to_date('07/10/2025 15:40:00','dd/mm/yyyy hh24:mm:ss'), 'scheduled');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
