@@ -1,5 +1,6 @@
 import { Container } from '@mui/material';
 import BarbecueCalculator from '../components/BarbecueCalculator.tsx';
+import { Outlet } from 'react-router-dom';
 
 const Calculator = ()=> {
   
@@ -8,6 +9,7 @@ const Calculator = ()=> {
         maxWidth={false} 
         sx={{height: "100%",  position: "fixed", backgroundColor: "#0a192f"}}
         >
+        <Outlet />
         <BarbecueCalculator />
       </Container>
       

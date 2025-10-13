@@ -55,6 +55,7 @@ const Home = ()=> {
           </Grid>
           <Grid size= {{xl:4, xs:12}} className= {styles.userGrid}>
           {user && <User {...user}/>}
+          
           </Grid>
           {isLoading && <Loader />}
         </Grid>

@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import { useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { RepoProps } from "../types/repo.ts";
 import Loader from '../components/Loader.tsx';
 import styles from "./Repos.module.css";
@@ -7,7 +7,6 @@ import BackBtn from '../components/BackBtn.tsx';
 import Repo from '../components/Repo.tsx';
 import { Container } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-
 
 const Repos = ()=> {
   const [repos,setRepos] = useState<RepoProps[] | [] | null>(null);

@@ -36,7 +36,7 @@ const BarbecueCalculator = ()=> {
         initialValues={{persons:0, foodSelected: []}} 
         validationSchema={validationScheme}
         onSubmit={(values) => {
-          navigate("/result", {
+          navigate("/barbecuecalculator/result", {
             state: {
               persons: values.persons,
               foodSelected: values.foodSelected,

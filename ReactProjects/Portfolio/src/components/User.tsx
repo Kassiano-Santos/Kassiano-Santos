@@ -16,6 +16,8 @@ const User = ({
   const handleRepos = ()=>{
     if(public_repos ===  0 ){
       alert("Can't found a repository for this user")
+    } else {
+       navigate(`/githubfinder/repos/${login}`)
     }
   }
     return (
@@ -39,14 +41,13 @@ const User = ({
           </div>
         </div>
         <div>
-        <Link 
-          className={styles.projectButton}
-          underline="none"
-          color="#fff"
-          onClick={()=>{ public_repos === 0 ? handleRepos()
-            : navigate(`/repos/${login}`)}
-          }>See the Best Project
-        </Link>
+          <Link 
+            className={styles.projectButton}
+            underline="none"
+            color="#fff"
+            onClick={()=>{handleRepos()}
+            }>See the Best Project
+          </Link>
         </div>
       </div>
     )
